@@ -1,0 +1,14 @@
+//
+// Created by Valentina on 8/5/2020.
+//
+
+#ifndef TRABAJOPRACTICO2AHORCADO_AHORCADO_H
+#define TRABAJOPRACTICO2AHORCADO_AHORCADO_H
+
+
+class Ahorcado {
+
+};
+
+
+#endif //TRABAJOPRACTICO2AHORCADO_AHORCADO_H
