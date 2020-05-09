@@ -1,3 +1,10 @@
+/*
+ * 75.41/95.15: Algoritmos y Programacion II - Catedra Juarez - 1°C 2020
+ * Trabajo Practico Individual N2: Ahorcado
+ * Hecho por Valentina Varela Rodriguez - 105374
+ */
+
+
 #include "Ahorcado.h"
 #include "utils.h"
 

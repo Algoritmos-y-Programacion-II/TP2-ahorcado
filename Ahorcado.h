@@ -23,9 +23,11 @@ class Ahorcado {
     // -------------------------- METODOS -------------------------- //
     public:
 
-        // PRE: vidasOut y tamanioPalabra > 0, nombreJugadorOut y palabraAleatoria != ""
-        // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
-        //       Crea una palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
+        // PRE: jugadorOut debe ser un jugador valido, tamanioPalabra > 0 y palabraAleatoria != ""
+        // POST: Crea un ahorcado
+        //       Inicializa el jugador con los mismos atributos que jugadorOut,
+        //       Inicializa la palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
+        //       Inicializa la palabraSecreta con tamanioPalabra cantidad de "_"
         Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra);
 
         // PRE: -

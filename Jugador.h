@@ -19,7 +19,7 @@ class Jugador {
 
         // PRE: vidasOut tiene que ser mayor a 3, string tiene que ser valido
         // POST: construye un jugador
-        Jugador(int vidasOut = 3, string nombreOut = "Jane/John Doe");
+        Jugador(int vidasOut = 3, string nombreOut = "Juan/a Perez");
 
         // PRE: -
         // POST: Devuelve las vidas del jugador
