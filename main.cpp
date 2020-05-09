@@ -13,13 +13,8 @@ int main() {
     bool jugarDeNuevo;
     Jugador jugador;
 
-    if(deseaCrearUsuario()) {
-
-        int vidas = pedirVidas();
-        string nombre = pedirNombre();
-
-        jugador.asignarVidas(vidas);
-        jugador.asignarNombre(nombre);
+    if(jugador.deseaCrearUsuario()) {
+        jugador.crearUsuario();
     }
 
     string palabraAleatoria = elegirPalabraAleatoria();

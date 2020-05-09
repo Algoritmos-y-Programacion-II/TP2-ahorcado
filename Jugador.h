@@ -5,7 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 #define TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 
-#include <string>
+#include <iostream>
 using namespace std;
 
 class Jugador {
@@ -32,6 +32,14 @@ class Jugador {
         // PRE: vidasASacar > 0
         // POST: Le saca vidasASacar cantidad de vidas al jugador
         void quitarVidas(int vidasASacar);
+
+        bool deseaCrearUsuario();
+
+        void crearUsuario();
+
+        string pedirNombre();
+
+        int pedirVidas();
 
         // PRE: vidasOut > 0
         // POST: Le asigna vidasOut vidas al jugador

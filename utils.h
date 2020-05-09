@@ -8,9 +8,6 @@
 #include <iostream>
 using namespace std;
 
-bool deseaCrearUsuario();
-int pedirVidas();
-string pedirNombre();
 string elegirPalabraAleatoria();
 
 #endif //TRABAJOPRACTICO2AHORCADO_UTILS_H
