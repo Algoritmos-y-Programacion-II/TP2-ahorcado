@@ -4,8 +4,10 @@
 
 #include "Ahorcado.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
-Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra), palabraSecreta(), jugador(vidasOut, nombre){
-    estadoJuego = NO_EMPEZO_JUEGO;
+//
+Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra),
+                                                                                                palabraSecreta("",0),
+                                                                                                jugador(vidasOut, nombre) {
     intentosFallidos = 0;
     palabraSecreta.redimensionar(tamanioPalabra);
     for (int i = 0; i < tamanioPalabra ; i++) {
@@ -14,11 +16,10 @@ Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int ta
 }
 
 void Ahorcado:: nuevoJuego() {
-    estadoJuego = EMPEZO_JUEGO;
     palabraAAdivinar.mostrarPalabra(); // Para testear
     string palabraAdivinada;
     actualizarAhorcado();
-    while (estadoJuego == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
+    while (jugador.obtenerVidas() > 0) {
         cout << "Ingresa una letra o palabra: ";
         cin >> palabraAdivinada;
         if (palabraAdivinada.length() > 1)

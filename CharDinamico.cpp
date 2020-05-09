@@ -4,13 +4,6 @@
 
 #include "CharDinamico.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
-// Constructor sin parametros
-CharDinamico:: CharDinamico() {
-    tamanio = 1;
-    palabra = new char[1];
-    asignarPalabra("");
-    cout << "El vector dinamico se almacena en: " << &palabra << endl;
-}
 
 // Constructor con parametros
 CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
@@ -61,7 +54,6 @@ void CharDinamico:: mostrarPalabra() {
     for(int i = 0; i < tamanio; i++) {
         cout << palabra[i];
     }
-    cout << endl;
 }
 
 void CharDinamico:: insertar(char caracter, int pos) {

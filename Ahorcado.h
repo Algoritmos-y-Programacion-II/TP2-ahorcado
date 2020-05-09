@@ -9,8 +9,6 @@
 #include "Jugador.h"
 #include "CharDinamico.h"
 
-const int NO_EMPEZO_JUEGO = -1;
-const int EMPEZO_JUEGO = 0;
 const int GANO_JUEGO = 1;
 const int PERDIO_JUEGO = 2;
 

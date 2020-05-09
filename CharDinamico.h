@@ -17,9 +17,16 @@ class CharDinamico {
 
     // -------------------------- METODOS -------------------------- //
     public:
-        CharDinamico();
-        CharDinamico(string palabra, int tamanioOut);
+
+        // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor que 1
+        // POST: Crea un vector de tipo char con la palabra palabraOut de tamaño tamanioOut
+        //       Muestra por pantalla en que lugar se reservo la memoria
+        CharDinamico(string palabraOut, int tamanioOut);
+
         CharDinamico(const CharDinamico& palabra);
+
+        // PRE: -
+        // POST: Libera la memoria
         ~CharDinamico();
 
         int obtenerTamanio();
