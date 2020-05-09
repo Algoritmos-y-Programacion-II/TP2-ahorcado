@@ -3,87 +3,42 @@
 //
 
 #include "Ahorcado.h"
-
-Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra) {
-    estadoJuego = EMPEZO_JUEGO;
-    jugador = Jugador(vidasOut, nombre);
+// ------------------------------ METODOS PUBLICOS ----------------------------------//
+Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra), jugador(vidasOut, nombre) {
+    estadoJuego = NO_EMPEZO_JUEGO;
+    //jugador = Jugador(vidasOut, nombre);
     intentosFallidos = 0;
-}
-
-void Ahorcado:: mostrarLogo() {
-    cout << "+==================================+\n"
-            "|              AHORCADO            |\n"
-            "+==================================+\n"
-            "|       +--------+                 |\n"
-            "|       |        |                 |\n"
-            "|       |                          |\n"
-            "|       |                          |\n"
-            "|       |                          |\n"
-            "|       |                          |\n"
-            "|       |                          |\n"
-            "|   +-------+                      |\n"
-            "|   |||||||||                      |\n"
-            "|   +-------+                      |\n"
-            "+==================================+\n"
-            "|    A B C D E F G H I J K L M N   |\n"
-            "|      O P Q R S T U V W X Y Z     |\n"
-            "+==================================+\n";
-}
-
-int Ahorcado:: obtenerEstadoJuego() {
-    return estadoJuego;
-}
-
-void Ahorcado:: arriesgar(char caracter) {
-    bool coincidio = palabraAAdivinar.checkCaracterEnPalabra(caracter);
-    if (coincidio) {
-        actualizarAhorcado(caracter);
-    } else {
-        intentosFallidos++;
-        jugador.quitarVidas(1);
-        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
-        actualizarDibujoAhorcado(intentosFallidos);
-    }
-}
-
-void Ahorcado:: arriesgar(string palabra) {
-    if (palabraAAdivinar.obtenerPalabra() == palabra) {
-        actualizarAhorcado(palabra);
-        estadoJuego = GANO_JUEGO;
-    } else {
-        intentosFallidos++;
-        jugador.quitarVidas(2);
-        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
-        actualizarDibujoAhorcado(intentosFallidos);
+    for (int i = 0; i < tamanioPalabra ; i++) {
+        palabraSecreta += '_';
     }
 }
 
 void Ahorcado:: nuevoJuego() {
-    mostrarLogo();
-    palabraAAdivinar.mostrarPalabra();
+    estadoJuego = EMPEZO_JUEGO;
+    palabraAAdivinar.mostrarPalabra(); // Para testear
     string palabraAdivinada;
-    while (obtenerEstadoJuego() == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
+    actualizarAhorcado();
+    while (estadoJuego == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
         cout << "Ingresa una letra o palabra: ";
         cin >> palabraAdivinada;
         if (palabraAdivinada.length() > 1)
             arriesgar(palabraAdivinada);
         else arriesgar(palabraAdivinada[0]);
     }
-    if (jugador.obtenerVidas() < 0)
+    if (jugador.obtenerVidas() <= 0)
         estadoJuego = PERDIO_JUEGO;
     mostrarMensajeGanoOPerdio();
 }
 
-void Ahorcado:: actualizarAhorcado(char caracter) {
-    actualizarDibujoAhorcado(intentosFallidos);
-    // TODO: mostrar *** y letras
-    cout << "+==================================+\n";
+int Ahorcado:: obtenerEstadoJuego() {
+    return estadoJuego;
 }
 
-void Ahorcado:: actualizarAhorcado(string palabra) {
-    // TODO: falta implementar
-    actualizarDibujoAhorcado(intentosFallidos);
-    cout << palabra << "\n+==================================+\n";
+bool Ahorcado:: deseaJugarDeNuevo() {
+    char si = 's', opcion;
+    cout << "¿Desea volver a jugar? [s/n] ";
+    cin >> opcion;
+    return si == opcion;
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
@@ -96,19 +51,54 @@ void Ahorcado:: mostrarMensajeGanoOPerdio() {
     }
 }
 
-bool Ahorcado:: deseaJugarDeNuevo() {
-    char si = 's', opcion;
-    cout << "¿Desea volver a jugar? [s/n] ";
-    cin >> opcion;
-    return si == opcion;
-}
-
 void Ahorcado:: mostrarDespedida() {
     cout << "Gracias por haber jugado al ahorcado "
          << jugador.obtenerNombre() << "!\nNos vemos la próxima :)\n";
 }
 
-void Ahorcado:: actualizarDibujoAhorcado(int fallos) {
+// ------------------------------ METODOS PRIVADOS ----------------------------------//
+
+void Ahorcado:: arriesgar(char caracter) {
+    bool coincidio = palabraAAdivinar.checkCaracterEnPalabra(caracter);
+    string palabraAux;
+
+    if (coincidio) {
+        palabraAux = palabraAAdivinar.obtenerPalabra();
+        for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
+            if (caracter == palabraAux[i])
+                palabraSecreta[i] = caracter;
+            }
+        if (palabraSecreta == palabraAux)
+            estadoJuego = GANO_JUEGO;
+        actualizarAhorcado();
+    } else {
+        intentosFallidos++;
+        jugador.quitarVidas(1);
+        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
+        actualizarAhorcado();
+    }
+}
+
+void Ahorcado:: arriesgar(string palabra) {
+    if (palabraAAdivinar.obtenerPalabra() == palabra) {
+        palabraSecreta = palabra;
+        actualizarAhorcado();
+        estadoJuego = GANO_JUEGO;
+    } else {
+        intentosFallidos++;
+        jugador.quitarVidas(2);
+        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
+        actualizarAhorcado();
+    }
+}
+
+void Ahorcado:: actualizarAhorcado() {
+    mostrarDibujoAhorcado(intentosFallidos);
+    cout << "             " << palabraSecreta;
+    cout << "\n+==================================+\n\n";
+}
+
+void Ahorcado:: mostrarDibujoAhorcado(int fallos) {
 
     switch (fallos) {
         case 0:

@@ -20,31 +20,36 @@ class Ahorcado {
         int intentosFallidos, estadoJuego = NO_EMPEZO_JUEGO;
         CharDinamico palabraAAdivinar;
         Jugador jugador;
-        char caracteresAdivinados[];
+        string palabraSecreta;
 
     public:
-        // PRE:
-        // POST:
+        // PRE: vidasOut y tamanioPalabra > 0, nombreJugadorOut y palabraAleatoria != ""
+        // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
+        //       Crea una palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
+        //       Le asigna NO_EMPEZO_JUEGO a estadoJuego
         Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra);
 
-        // PRE: vidasOut > 0 y nombreJugadorOut != ""
-        // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
-        //       elige una palabra random del array PALABRAS_A_ADIVNAR para adivinar
-        //       y modifica estadoJuego a COMENZO
-
-
+        // PRE: -
+        // POST: Comienza un nuevo juego
         void nuevoJuego();
 
+        // PRE: -
+        // POST: Devuelve el estado del juego
         int obtenerEstadoJuego();
 
-        // PRE: caracter debe ser una letra [a-z]
-        // POST: devuelve true si caracter esta en palabraAAdivinar, de lo contrario false
-        bool checkCaracter(char caracter);
-
         // PRE: -
-        // POST: si el usuario ingresa s, devuelve true, de lo contrario false
+        // POST: Si el usuario ingresa s, devuelve true, de lo contrario false
         bool deseaJugarDeNuevo();
 
+        // PRE: -
+        // POST: Muestra por pantalla el mensaje correspondiente de acuerdo a si el jugador gano o perdio
+        void mostrarMensajeGanoOPerdio();
+
+        // PRE: -
+        // POST: Muestra por pantalla un mensaje de despedida
+        void mostrarDespedida();
+
+    private:
         // PRE: caracter debe ser una letra [a-z]
         // POST: permite que el usuario arriesgue una letra
         void arriesgar(char caracter);
@@ -53,18 +58,13 @@ class Ahorcado {
         // POST: permite que el usuario arriesge una palabra
         void arriesgar(string palabra);
 
-        void actualizarAhorcado(string palabraArriesgada);
-        void actualizarAhorcado(char caracter);
-        void actualizarDibujoAhorcado(int fallos);
         // PRE: -
-        // POST: Muestra por pantalla el mensaje correspondiente de acuerdo a si el jugador gano o perdio
-        void mostrarMensajeGanoOPerdio();
+        // POST: muestra por pantalla el dibujo del ahorcado y la palabra secreta actualizados
+        void actualizarAhorcado();
 
-        // PRE: -
-        // POST: Muestra por pantalla el logo
-        void mostrarLogo();
-
-        void mostrarDespedida();
+        // PRE: 0 <= fallos <= 7
+        // POST: muestra el dibujo
+        void mostrarDibujoAhorcado(int fallos);
 
 
 };

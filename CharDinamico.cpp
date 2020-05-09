@@ -29,11 +29,11 @@ void CharDinamico:: asignarPalabra(string palabraOut) {
 }
 
 string CharDinamico:: obtenerPalabra() {
-    string palabra;
+    string palabraStr;
     for (int i = 0; i < tamanio; i++) {
-        palabra += this->palabra[i];
+        palabraStr += this->palabra[i];
     }
-    return palabra;
+    return palabraStr;
 }
 
 int CharDinamico:: obtenerTamanio() {
