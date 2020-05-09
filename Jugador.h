@@ -9,31 +9,37 @@
 using namespace std;
 
 class Jugador {
+    // -------------------------- ATRIBUTOS -------------------------- //
     private:
         int vidas;
         string nombre;
 
+    // -------------------------- METODOS -------------------------- //
     public:
 
         // PRE: vidasOut tiene que ser mayor a 3, string tiene que ser valido
         // POST: construye un jugador
         Jugador(int vidasOut = 3, string nombreOut = "Jane/John Doe");
+
         // PRE: -
         // POST: Devuelve las vidas del jugador
         int obtenerVidas();
+
         // PRE: -
         // POST: Devuelve el nombre del jugador
         string obtenerNombre();
+
+        // PRE: vidasASacar > 0
+        // POST: Le saca vidasASacar cantidad de vidas al jugador
+        void quitarVidas(int vidasASacar);
+
         // PRE: vidasOut > 0
         // POST: Le asigna vidasOut vidas al jugador
         void asignarVidas(int vidasOut);
+
         // PRE: nombreOut != ""
         // POST: Le asigna nombreOut al jugador
         void asignarNombre(string nombreOut);
-
-        void quitarVidas(int vidasASacar);
-
-
 };
 
 

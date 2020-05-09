@@ -4,12 +4,12 @@
 
 #include "Ahorcado.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
-Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra), jugador(vidasOut, nombre) {
+Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra), palabraSecreta(), jugador(vidasOut, nombre){
     estadoJuego = NO_EMPEZO_JUEGO;
-    //jugador = Jugador(vidasOut, nombre);
     intentosFallidos = 0;
+    palabraSecreta.redimensionar(tamanioPalabra);
     for (int i = 0; i < tamanioPalabra ; i++) {
-        palabraSecreta += '_';
+        palabraSecreta.insertar('_', i);
     }
 }
 
@@ -28,10 +28,6 @@ void Ahorcado:: nuevoJuego() {
     if (jugador.obtenerVidas() <= 0)
         estadoJuego = PERDIO_JUEGO;
     mostrarMensajeGanoOPerdio();
-}
-
-int Ahorcado:: obtenerEstadoJuego() {
-    return estadoJuego;
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
@@ -63,12 +59,11 @@ void Ahorcado:: arriesgar(char caracter) {
     string palabraAux;
 
     if (coincidio) {
-        palabraAux = palabraAAdivinar.obtenerPalabra();
         for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
-            if (caracter == palabraAux[i])
-                palabraSecreta[i] = caracter;
+            if (caracter == palabraAAdivinar.obtenerElemento(i))
+                palabraSecreta.insertar(caracter, i);
             }
-        if (palabraSecreta == palabraAux)
+        if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
             estadoJuego = GANO_JUEGO;
         actualizarAhorcado();
     } else {
@@ -81,7 +76,7 @@ void Ahorcado:: arriesgar(char caracter) {
 
 void Ahorcado:: arriesgar(string palabra) {
     if (palabraAAdivinar.obtenerPalabra() == palabra) {
-        palabraSecreta = palabra;
+        palabraSecreta.asignarPalabra(palabra);
         actualizarAhorcado();
         estadoJuego = GANO_JUEGO;
     } else {
@@ -94,7 +89,8 @@ void Ahorcado:: arriesgar(string palabra) {
 
 void Ahorcado:: actualizarAhorcado() {
     mostrarDibujoAhorcado(intentosFallidos);
-    cout << "             " << palabraSecreta;
+    cout << "             ";
+    palabraSecreta.mostrarPalabra();
     cout << "\n+==================================+\n\n";
 }
 

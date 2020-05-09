@@ -15,14 +15,15 @@ const int GANO_JUEGO = 1;
 const int PERDIO_JUEGO = 2;
 
 class Ahorcado {
-
+    // -------------------------- ATRIBUTOS -------------------------- //
     private:
-        int intentosFallidos, estadoJuego = NO_EMPEZO_JUEGO;
-        CharDinamico palabraAAdivinar;
+        int intentosFallidos, estadoJuego;
+        CharDinamico palabraAAdivinar, palabraSecreta;
         Jugador jugador;
-        string palabraSecreta;
 
+    // -------------------------- METODOS -------------------------- //
     public:
+
         // PRE: vidasOut y tamanioPalabra > 0, nombreJugadorOut y palabraAleatoria != ""
         // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
         //       Crea una palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
@@ -32,10 +33,6 @@ class Ahorcado {
         // PRE: -
         // POST: Comienza un nuevo juego
         void nuevoJuego();
-
-        // PRE: -
-        // POST: Devuelve el estado del juego
-        int obtenerEstadoJuego();
 
         // PRE: -
         // POST: Si el usuario ingresa s, devuelve true, de lo contrario false
@@ -68,6 +65,5 @@ class Ahorcado {
 
 
 };
-
 
 #endif //TRABAJOPRACTICO2AHORCADO_AHORCADO_H

@@ -10,21 +10,27 @@
 using namespace std;
 
 class CharDinamico {
+    // -------------------------- ATRIBUTOS -------------------------- //
     private:
         int tamanio;
         char* palabra;
 
+    // -------------------------- METODOS -------------------------- //
     public:
+        CharDinamico();
         CharDinamico(string palabra, int tamanioOut);
         CharDinamico(const CharDinamico& palabra);
         ~CharDinamico();
 
         int obtenerTamanio();
-        string obtenerPalabra();
-        void mostrarPalabra();
-        void asignarPalabra(string palabraOut);
 
-        void liberarMemoria();
+        string obtenerPalabra();
+
+        char obtenerElemento(int pos);
+
+        void mostrarPalabra();
+
+        void asignarPalabra(string palabraOut);
 
         void insertar(char caracter, int pos);
 

@@ -3,7 +3,8 @@
 //
 
 #include "Jugador.h"
-
+// ------------------------------ METODOS PUBLICOS ----------------------------------//
+// Constructor con parametros
 Jugador:: Jugador(int vidasOut, string nombreOut) {
     vidas = vidasOut;
     nombre = nombreOut;
