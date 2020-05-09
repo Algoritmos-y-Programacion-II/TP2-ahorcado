@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+bool deseaCrearUsuario();
 int pedirVidas();
 string pedirNombre();
 string elegirPalabraAleatoria();

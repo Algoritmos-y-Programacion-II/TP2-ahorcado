@@ -5,10 +5,11 @@
 #include "Ahorcado.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 //
-Ahorcado:: Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra),
-                                                                                                palabraSecreta("",0),
-                                                                                                jugador(vidasOut, nombre) {
+Ahorcado:: Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra),
+                                                                                       palabraSecreta("",0) {
+    estadoJuego = EMPEZO_JUEGO;
     intentosFallidos = 0;
+    jugador = jugadorOut;
     palabraSecreta.redimensionar(tamanioPalabra);
     for (int i = 0; i < tamanioPalabra ; i++) {
         palabraSecreta.insertar('_', i);
@@ -19,7 +20,7 @@ void Ahorcado:: nuevoJuego() {
     palabraAAdivinar.mostrarPalabra(); // Para testear
     string palabraAdivinada;
     actualizarAhorcado();
-    while (jugador.obtenerVidas() > 0) {
+    while (estadoJuego == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
         cout << "Ingresa una letra o palabra: ";
         cin >> palabraAdivinada;
         if (palabraAdivinada.length() > 1)
@@ -33,7 +34,7 @@ void Ahorcado:: nuevoJuego() {
 
 bool Ahorcado:: deseaJugarDeNuevo() {
     char si = 's', opcion;
-    cout << "¿Desea volver a jugar? [s/n] ";
+    cout << "\n¿Queres jugar de nuevo? [s/n] ";
     cin >> opcion;
     return si == opcion;
 }
@@ -41,16 +42,17 @@ bool Ahorcado:: deseaJugarDeNuevo() {
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
     string nombre = jugador.obtenerNombre();
     if (estadoJuego == GANO_JUEGO)  {
-        cout << "Muy bien " << nombre << ", ganaste!\n";
+        cout << "Esta vez me ganaste " << nombre << "! Ya vas a ver la proxima...\n";
     } else if (estadoJuego == PERDIO_JUEGO) {
-        cout << "Lo siento " << nombre << ", esta vez perdiste :(\nLa palabra era: ";
+        cout << "Que pena " << nombre << ", esta vez perdiste. Quizás la proxima me ganas.\nLa palabra era: ";
         palabraAAdivinar.mostrarPalabra();
+        cout << "\n";
     }
 }
 
 void Ahorcado:: mostrarDespedida() {
-    cout << "Gracias por haber jugado al ahorcado "
-         << jugador.obtenerNombre() << "!\nNos vemos la próxima :)\n";
+    cout << "\n¡Gracias por haber jugado al ahorcado "
+         << jugador.obtenerNombre() << "!\nNos vemos la próxima :D\n";
 }
 
 // ------------------------------ METODOS PRIVADOS ----------------------------------//

@@ -2,14 +2,24 @@
 #include "utils.h"
 
 int main() {
+
     bool jugarDeNuevo;
-    do {
+    Jugador jugador;
+
+    if(deseaCrearUsuario()) {
+
         int vidas = pedirVidas();
         string nombre = pedirNombre();
-        string palabraAleatoria = elegirPalabraAleatoria();
-        int tamanioPalabra = palabraAleatoria.length();
 
-        Ahorcado ahorcado(vidas, nombre, palabraAleatoria, tamanioPalabra);
+        jugador.asignarVidas(vidas);
+        jugador.asignarNombre(nombre);
+    }
+
+    string palabraAleatoria = elegirPalabraAleatoria();
+    int tamanioPalabra = palabraAleatoria.length();
+
+    do {
+        Ahorcado ahorcado(jugador, palabraAleatoria, tamanioPalabra);
         ahorcado.nuevoJuego();
 
         jugarDeNuevo = ahorcado.deseaJugarDeNuevo();

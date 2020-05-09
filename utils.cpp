@@ -17,6 +17,14 @@ string PALABRAS[] = { "monopatin",
 
 int CANT_PALABRAS = (PALABRAS->length() + 1);
 
+bool deseaCrearUsuario() {
+    char opcion;
+    cout << "¿Queres crear un usuario y elegir la cantidad de vidas? [s/n]\n"
+            "(De lo contrario se te asignara un nombre y una cantidad de vidas predeterminadas)\n";
+    cin >> opcion;
+    return opcion == 's';
+}
+
 string elegirPalabraAleatoria() {
     srand(time(NULL));
     int random = rand() % (CANT_PALABRAS - 1);
@@ -25,7 +33,7 @@ string elegirPalabraAleatoria() {
 
 int pedirVidas() {
     int vidas;
-    cout << "Ingrese la cantidad de vidas que desea: ";
+    cout << "\nIngrese la cantidad de vidas que desea: ";
     cin >> vidas;
     return vidas;
 }

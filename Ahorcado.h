@@ -9,6 +9,7 @@
 #include "Jugador.h"
 #include "CharDinamico.h"
 
+const int EMPEZO_JUEGO = 0;
 const int GANO_JUEGO = 1;
 const int PERDIO_JUEGO = 2;
 
@@ -25,7 +26,7 @@ class Ahorcado {
         // PRE: vidasOut y tamanioPalabra > 0, nombreJugadorOut y palabraAleatoria != ""
         // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
         //       Crea una palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
-        Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra);
+        Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra);
 
         // PRE: -
         // POST: Comienza un nuevo juego
