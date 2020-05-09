@@ -25,7 +25,6 @@ class Ahorcado {
         // PRE: vidasOut y tamanioPalabra > 0, nombreJugadorOut y palabraAleatoria != ""
         // POST: Crea un jugador con vidasOut cantidad de vidas, nombreJugadorOut nombre,
         //       Crea una palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
-        //       Le asigna NO_EMPEZO_JUEGO a estadoJuego
         Ahorcado(int vidasOut, string nombre, string palabraAleatoria, int tamanioPalabra);
 
         // PRE: -
@@ -59,7 +58,7 @@ class Ahorcado {
 
         // PRE: 0 <= fallos <= 7
         // POST: muestra el dibujo
-        void mostrarDibujoAhorcado(int fallos);
+        void mostrarDibujoAhorcado();
 
 
 };

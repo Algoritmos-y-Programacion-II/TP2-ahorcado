@@ -89,15 +89,15 @@ void Ahorcado:: arriesgar(string palabra) {
 }
 
 void Ahorcado:: actualizarAhorcado() {
-    mostrarDibujoAhorcado(intentosFallidos);
+    mostrarDibujoAhorcado();
     cout << "             ";
     palabraSecreta.mostrarPalabra();
     cout << "\n+==================================+\n\n";
 }
 
-void Ahorcado:: mostrarDibujoAhorcado(int fallos) {
+void Ahorcado:: mostrarDibujoAhorcado() {
 
-    switch (fallos) {
+    switch (intentosFallidos) {
         case 0:
             cout << "+==================================+\n"
                     "|              AHORCADO            |\n"
