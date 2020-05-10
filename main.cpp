@@ -16,10 +16,7 @@
  *               Decidi utilizar 3 clases: Ahorcado, Jugador y CharDinamico porque me parecia mas prolijo
  *               para ordenar los metodos y atributos. No crei que el metodo insertarCaracter(), por ejemplo,
  *               perteneciera a la clase Ahorcado que corresponde al juego.
- *               Ahorcado tiene dos atributos de tipo CharDinamico y uno de tipo Jugador.
- *               CharDinamico tiene dos atributos: un puntero a char y un entero tamanio,
- *               Jugador tambien tiene dos atributos: un nombre de tipo string y la cantidad de vidas de tipo entero.
- *
+ *               De esta manera Ahorcado tiene dos atributos de tipo CharDinamico y uno de tipo Jugador.
  */
 
 #include "Ahorcado.h"
