@@ -5,8 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 #define TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 
-#include <iostream>
-using namespace std;
+#include "utils.h"
 
 class Jugador {
     // -------------------------- ATRIBUTOS -------------------------- //
@@ -33,13 +32,24 @@ class Jugador {
         // POST: Le saca vidasASacar cantidad de vidas al jugador
         void quitarVidas(int vidasASacar);
 
+        // PRE: -
+        // POST: Devuelve true si el usuario desea crear un usuario, de lo contrario false
         bool deseaCrearUsuario();
 
+        // PRE: -
+        // POST: crea un usuario
         void crearUsuario();
 
+        // PRE: -
+        // POST: Devuelve el nombre ingresado por el usuario
         string pedirNombre();
 
+        // PRE: -
+        // POST: Devuelve el numero de vidas ingresado por el usuario
         int pedirVidas();
+
+    private:
+        // No me interesa que el usuario acceda a estos metodos, porque las llama el metodo crearUsuario()
 
         // PRE: vidasOut > 0
         // POST: Le asigna vidasOut vidas al jugador
