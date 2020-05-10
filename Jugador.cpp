@@ -3,7 +3,6 @@
 //
 
 #include "Jugador.h"
-using namespace std;
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 // Constructor con parametros
 Jugador:: Jugador(int vidasOut, string nombreOut) {
@@ -21,29 +20,29 @@ string Jugador:: obtenerNombre() {
 
 bool Jugador:: deseaCrearUsuario() {
     char opcion;
-    cout << "¿Queres crear un usuario y elegir la cantidad de vidas? [s/n]\n"
-            "(De lo contrario se te asignara un nombre y una cantidad de vidas predeterminadas)\n";
+    cout << "\nQueres crear un usuario y elegir la cantidad de vidas? [s/n]\n"
+            "--AVISO-- De lo contrario se te asignara un nombre y una cantidad de vidas predeterminadas\n";
     cin >> opcion;
-    return opcion == 's';
+    return ('s' == opcion || 'S' == opcion);
 }
 
 int Jugador:: pedirVidas() {
     int vidas;
-    cout << "\nIngrese la cantidad de vidas que desea: ";
+    cout << "\nIngresa la cantidad de vidas (max 7): ";
     cin >> vidas;
-    return vidas;
+    return validarNumero(1,7, vidas);
 }
 
 string Jugador:: pedirNombre() {
     string nombre;
-    cout << "Ingrese su nombre: ";
+    cout << "Ingresa un nombre: ";
     cin >> nombre;
-    return nombre;
+    return validarPalabra(nombre);
 }
 
 void Jugador:: crearUsuario() {
-    int vidasOut = pedirVidas();
     string nombreOut = pedirNombre();
+    int vidasOut = pedirVidas();
     asignarVidas(vidasOut);
     asignarNombre(nombreOut);
 }
@@ -58,4 +57,5 @@ void Jugador:: asignarNombre(string nombreOut) {
 
 void Jugador:: quitarVidas(int vidasASacar) {
     vidas -= vidasASacar;
+    cout << "Ooops! Incorrecto\nTe quedan " << vidas << " vidas\n";
 }
