@@ -17,10 +17,9 @@ int main() {
         jugador.crearUsuario();
     }
 
-    string palabraAleatoria = elegirPalabraAleatoria();
-    int tamanioPalabra = palabraAleatoria.length();
-
     do {
+        string palabraAleatoria = elegirPalabraAleatoriaSegunCategoria();
+        int tamanioPalabra = palabraAleatoria.length();
         Ahorcado ahorcado(jugador, palabraAleatoria, tamanioPalabra);
         ahorcado.nuevoJuego();
 
