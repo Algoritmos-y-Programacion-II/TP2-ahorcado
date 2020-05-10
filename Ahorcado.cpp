@@ -17,26 +17,33 @@ Ahorcado:: Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPala
 }
 
 void Ahorcado:: nuevoJuego() {
-    palabraAAdivinar.mostrarPalabra(); // Para testear
+
     string palabraAdivinada;
     actualizarAhorcado();
+
     while (estadoJuego == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
+
         cout << "Ingresa una letra o palabra: ";
-        cin >> palabraAdivinada;
+        palabraAdivinada = obtenerPalabraEnMayusculas();
+        palabraAdivinada = validarPalabra(palabraAdivinada);
+
         if (palabraAdivinada.length() > 1)
             arriesgar(palabraAdivinada);
+
         else arriesgar(palabraAdivinada[0]);
     }
+
     if (jugador.obtenerVidas() <= 0)
         estadoJuego = PERDIO_JUEGO;
+
     mostrarMensajeGanoOPerdio();
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
-    char si = 's', opcion;
-    cout << "\n¿Queres jugar de nuevo? [s/n] ";
+    char opcion;
+    cout << "\nQueres jugar de nuevo? [s/n] ";
     cin >> opcion;
-    return si == opcion;
+    return ('s' == opcion || 'S' == opcion);
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
@@ -44,15 +51,15 @@ void Ahorcado:: mostrarMensajeGanoOPerdio() {
     if (estadoJuego == GANO_JUEGO)  {
         cout << "Esta vez me ganaste " << nombre << "! Ya vas a ver la proxima...\n";
     } else if (estadoJuego == PERDIO_JUEGO) {
-        cout << "Que pena " << nombre << ", esta vez perdiste. Quizás la proxima me ganas.\nLa palabra era: ";
-        palabraAAdivinar.mostrarPalabra();
+        cout << "Que pena " << nombre << ", esta vez perdiste. Quizas la proxima me ganas.\nLa palabra era: ";
+        palabraAAdivinar.mostrarCaracteresSeparadosPorEspacio();
         cout << "\n";
     }
 }
 
 void Ahorcado:: mostrarDespedida() {
-    cout << "\n¡Gracias por haber jugado al ahorcado "
-         << jugador.obtenerNombre() << "!\nNos vemos la próxima :D\n";
+    cout << "\nGracias por haber jugado al ahorcado "
+         << jugador.obtenerNombre() << "!\nNos vemos la proxima :D\n";
 }
 
 // ------------------------------ METODOS PRIVADOS ----------------------------------//
@@ -72,7 +79,6 @@ void Ahorcado:: arriesgar(char caracter) {
     } else {
         intentosFallidos++;
         jugador.quitarVidas(1);
-        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
         actualizarAhorcado();
     }
 }
@@ -83,9 +89,8 @@ void Ahorcado:: arriesgar(string palabra) {
         actualizarAhorcado();
         estadoJuego = GANO_JUEGO;
     } else {
-        intentosFallidos++;
+        intentosFallidos += 2;
         jugador.quitarVidas(2);
-        cout << "Ooops! Incorrecto\nLe quedan " << jugador.obtenerVidas() << " vidas\n";
         actualizarAhorcado();
     }
 }
@@ -93,7 +98,7 @@ void Ahorcado:: arriesgar(string palabra) {
 void Ahorcado:: actualizarAhorcado() {
     mostrarDibujoAhorcado();
     cout << "             ";
-    palabraSecreta.mostrarPalabra();
+    palabraSecreta.mostrarCaracteresSeparadosPorEspacio();
     cout << "\n+==================================+\n\n";
 }
 

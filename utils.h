@@ -6,8 +6,31 @@
 #define TRABAJOPRACTICO2AHORCADO_UTILS_H
 
 #include <iostream>
+
 using namespace std;
 
-string elegirPalabraAleatoria();
+const int VERDURAS = 1;
+const int FRUTAS = 2;
+const int PAISES = 3;
+const int NOMBRES_FEMENINOS = 4;
+const int NOMBRES_MASCULINOS = 5;
+
+const int CANT_PALABRAS = 10;
+
+const string PALABRAS_VERDURAS[CANT_PALABRAS] = { "PAPA", "ACELGA", "TOMATE", "ZANAHORIA", "REMOLACHA", "BATATA", "ESPINACA", "ZUCCINI", "BERENJENA", "CEBOLLA" };
+const string PALABRAS_FRUTAS[CANT_PALABRAS] = {"BANANA", "MANZANA", "MANDARINA", "NARANJA", "HIGO", "DATIL", "MELON", "SANDIA", "ANANA", "CIRUELA"};
+const string PALABRAS_PAISES[CANT_PALABRAS] = {"ARGENTINA", "PARAGUAY", "URUGUAY", "CHILE", "BOLIVIA", "PERU", "ECUADOR", "VENEZUELA", "MEXICO", "GUATEMALA"};
+const string PALABRAS_NOMBRES_M[CANT_PALABRAS] = {"TOMAS", "PEDRO", "JUAN", "hernan", "ALEJANDRO", "TOBIAS", "MATEO", "THEO", "JORGE", "ANDRES"};
+const string PALABRAS_NOMBRES_F[CANT_PALABRAS] = {"VALERIA", "AGUSTINA", "ALEXA", "MARTINA", "MAGALI", "VERONICA", "FLORENCIA", "JOSELINA", "ANDREA", "INES"};
+
+// PRE: -
+// POST: devuelve una palabra aleatoria segun la categoria elegida por el usuario
+string elegirPalabraAleatoriaSegunCategoria();
+
+int validarNumero(int min, int max, int num);
+
+string validarPalabra(string palabra);
+
+string obtenerPalabraEnMayusculas();
 
 #endif //TRABAJOPRACTICO2AHORCADO_UTILS_H
