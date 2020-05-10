@@ -38,7 +38,7 @@ class Ahorcado {
         // POST: Si el usuario ingresa s, devuelve true, de lo contrario false
         bool deseaJugarDeNuevo();
 
-        // PRE: -
+        // PRE: El estadoJuego debe ser igual a GANO_JUEGO o PERDIO_JUEGO
         // POST: Muestra por pantalla el mensaje correspondiente de acuerdo a si el jugador gano o perdio
         void mostrarMensajeGanoOPerdio();
 
@@ -46,13 +46,17 @@ class Ahorcado {
         // POST: Muestra por pantalla un mensaje de despedida
         void mostrarDespedida();
 
+        // PRE: -
+        // POST: Muestra por pantalla las instrucciones
+        void mostrarInstrucciones();
+
     private:
         // PRE: caracter debe ser una letra [a-z]
-        // POST: permite que el usuario arriesgue una letra
+        // POST: -
         void arriesgar(char caracter);
 
         // PRE: palabra debe ser un string válido que solo contenga letras [a-z]
-        // POST: permite que el usuario arriesge una palabra
+        // POST: -
         void arriesgar(string palabra);
 
         // PRE: -

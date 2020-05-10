@@ -39,6 +39,17 @@ void Ahorcado:: nuevoJuego() {
     mostrarMensajeGanoOPerdio();
 }
 
+void Ahorcado:: mostrarInstrucciones() {
+    cout << "Objetivo: adivinar la palabra secreta antes de quedarse sin vidas\n"
+            "Instrucciones:\n"
+            "   1. Elegi si queres o no crearte un usuario con tu nombre y cantidad de vidas\n"
+            "   2. Eligi la categoria a la que pertenecera la palabra a adivinar\n"
+            "   3. Intenta adivinar la palabra! Podes arriesgar tanto de a una letra como la palabra entera y puede ser"
+            "tanto en minuscula como en mayuscula (o ambas), pero OJO si arriesgas la palabra entera y no es correcta "
+            "vas a PERDER DOS VIDAS en vez de una.\n"
+            "Buena suerte y que comience el juego!\n";
+}
+
 bool Ahorcado:: deseaJugarDeNuevo() {
     char opcion;
     cout << "\nQueres jugar de nuevo? [s/n] ";
@@ -75,24 +86,22 @@ void Ahorcado:: arriesgar(char caracter) {
             }
         if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
             estadoJuego = GANO_JUEGO;
-        actualizarAhorcado();
     } else {
         intentosFallidos++;
         jugador.quitarVidas(1);
-        actualizarAhorcado();
     }
+    actualizarAhorcado();
 }
 
 void Ahorcado:: arriesgar(string palabra) {
     if (palabraAAdivinar.obtenerPalabra() == palabra) {
         palabraSecreta.asignarPalabra(palabra);
-        actualizarAhorcado();
         estadoJuego = GANO_JUEGO;
     } else {
         intentosFallidos += 2;
         jugador.quitarVidas(2);
-        actualizarAhorcado();
     }
+    actualizarAhorcado();
 }
 
 void Ahorcado:: actualizarAhorcado() {
