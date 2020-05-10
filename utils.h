@@ -27,10 +27,16 @@ const string PALABRAS_NOMBRES_F[CANT_PALABRAS] = {"VALERIA", "AGUSTINA", "ALEXA"
 // POST: devuelve una palabra aleatoria segun la categoria elegida por el usuario
 string elegirPalabraAleatoriaSegunCategoria();
 
+// PRE: -
+// POST: Verifica que num este entre min y max, devuelve el numero validado
 int validarNumero(int min, int max, int num);
 
+// PRE: -
+// POST: Verifica que la palabra solo contenga letras, devuelve la palabra validada
 string validarPalabra(string palabra);
 
+// PRE: -
+// POST: Devuelve una palabra ingresada por el usuario pero en mayusculas
 string obtenerPalabraEnMayusculas();
 
 #endif //TRABAJOPRACTICO2AHORCADO_UTILS_H

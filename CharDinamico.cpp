@@ -38,7 +38,7 @@ void CharDinamico:: asignarPalabra(string palabraOut) {
 string CharDinamico:: obtenerPalabra() {
     string palabraStr;
     for (int i = 0; i < tamanio; i++) {
-        palabraStr += this->palabra[i];
+        palabraStr += toupper(this->palabra[i]);
     }
     return palabraStr;
 }
@@ -57,7 +57,7 @@ void CharDinamico:: mostrarCaracteresSeparadosPorEspacio() {
     }
 }
 
-void CharDinamico:: insertar(char caracter, int pos) {
+void CharDinamico:: insertarCaracter(char caracter, int pos) {
     palabra[pos] = caracter;
 }
 
@@ -84,11 +84,13 @@ bool CharDinamico:: checkCaracterEnPalabra(char c) {
 
 // ------------------------------ METODOS PRIVADOS ----------------------------------//
 void CharDinamico:: asignarNuloAlVector(int inicio, int final) {
-    for (int i = inicio; i <= final; i++)
-        palabra[i] = ' ';
+    if (tamanio > 0)
+        for (int i = inicio; i < final; i++)
+            palabra[i] = ' ';
 }
 
 void CharDinamico:: copiarDatos(char* vec, int inicio, int final) {
-    for (int i = inicio; i <= final; i++)
-        palabra[i] = vec[i];
+    if (tamanio > 0)
+        for (int i = inicio; i < final; i++)
+            palabra[i] = vec[i];
 }

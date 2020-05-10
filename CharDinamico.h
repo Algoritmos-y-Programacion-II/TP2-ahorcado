@@ -51,7 +51,7 @@ class CharDinamico {
 
         // PRE: caracter debe ser una letra [a-z] valida, pos >= 0
         // POST: Inserta caracter en palabra[pos]
-        void insertar(char caracter, int pos);
+        void insertarCaracter(char caracter, int pos);
 
         // PRE: tamanioNuevo > 0
         // POST: Redimensiona el vector

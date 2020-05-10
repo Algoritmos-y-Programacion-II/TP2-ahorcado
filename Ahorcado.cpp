@@ -12,7 +12,7 @@ Ahorcado:: Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPala
     jugador = jugadorOut;
     palabraSecreta.redimensionar(tamanioPalabra);
     for (int i = 0; i < tamanioPalabra ; i++) {
-        palabraSecreta.insertar('_', i);
+        palabraSecreta.insertarCaracter('_', i);
     }
 }
 
@@ -71,7 +71,7 @@ void Ahorcado:: arriesgar(char caracter) {
     if (coincidio) {
         for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
             if (caracter == palabraAAdivinar.obtenerElemento(i))
-                palabraSecreta.insertar(caracter, i);
+                palabraSecreta.insertarCaracter(caracter, i);
             }
         if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
             estadoJuego = GANO_JUEGO;
