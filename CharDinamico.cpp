@@ -29,12 +29,6 @@ CharDinamico:: ~CharDinamico() {
     cout << "\n--AVISO-- Se libero la memoria almacenada en: " << &palabra << endl;
 }
 
-void CharDinamico:: asignarPalabra(string palabraOut) {
-    for (int i = 0; i < tamanio; i++) {
-        palabra[i] = palabraOut[i];
-    }
-}
-
 string CharDinamico:: obtenerPalabra() {
     string palabraStr;
     for (int i = 0; i < tamanio; i++) {
@@ -51,7 +45,13 @@ int CharDinamico:: obtenerTamanio() {
     return tamanio;
 }
 
-void CharDinamico:: mostrarCaracteresSeparadosPorEspacio() {
+void CharDinamico:: asignarPalabra(string palabraOut) {
+    for (int i = 0; i < tamanio; i++) {
+        palabra[i] = palabraOut[i];
+    }
+}
+
+void CharDinamico:: mostrarCaracteres() {
     for(int i = 0; i < tamanio; i++) {
         cout << palabra[i] << " ";
     }

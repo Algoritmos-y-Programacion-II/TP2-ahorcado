@@ -46,8 +46,8 @@ class CharDinamico {
         void asignarPalabra(string palabraOut);
 
         // PRE: -
-        // POST: Muestra por pantalla la palabra
-        void mostrarCaracteresSeparadosPorEspacio();
+        // POST: Muestra por pantalla la palabra separados por un espacio
+        void mostrarCaracteres();
 
         // PRE: caracter debe ser una letra [a-z] valida, pos >= 0
         // POST: Inserta caracter en palabra[pos]
