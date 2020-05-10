@@ -19,7 +19,7 @@
  *               De esta manera Ahorcado tiene dos atributos de tipo CharDinamico y uno de tipo Jugador.
  */
 
-#include "Ahorcado.h"
+#include "clases/Ahorcado.h"
 
 int main() {
 
