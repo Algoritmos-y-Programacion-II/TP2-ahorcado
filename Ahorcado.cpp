@@ -52,7 +52,7 @@ void Ahorcado:: mostrarMensajeGanoOPerdio() {
         cout << "Esta vez me ganaste " << nombre << "! Ya vas a ver la proxima...\n";
     } else if (estadoJuego == PERDIO_JUEGO) {
         cout << "Que pena " << nombre << ", esta vez perdiste. Quizas la proxima me ganas.\nLa palabra era: ";
-        palabraAAdivinar.mostrarCaracteresSeparadosPorEspacio();
+        palabraAAdivinar.mostrarCaracteres();
         cout << "\n";
     }
 }
@@ -98,7 +98,7 @@ void Ahorcado:: arriesgar(string palabra) {
 void Ahorcado:: actualizarAhorcado() {
     mostrarDibujoAhorcado();
     cout << "             ";
-    palabraSecreta.mostrarCaracteresSeparadosPorEspacio();
+    palabraSecreta.mostrarCaracteres();
     cout << "\n+==================================+\n\n";
 }
 
