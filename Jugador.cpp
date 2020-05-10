@@ -21,7 +21,7 @@ string Jugador:: obtenerNombre() {
 bool Jugador:: deseaCrearUsuario() {
     char opcion;
     cout << "\nQueres crear un usuario y elegir la cantidad de vidas? [s/n]\n"
-            "--AVISO-- De lo contrario se te asignara un nombre y una cantidad de vidas predeterminadas\n";
+            "--AVISO-- De lo contrario se te asignara el nombre \"Juan/a Perez\" y 3 vidas\n";
     cin >> opcion;
     return ('s' == opcion || 'S' == opcion);
 }
