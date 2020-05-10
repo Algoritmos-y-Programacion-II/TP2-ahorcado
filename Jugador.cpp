@@ -47,15 +47,16 @@ void Jugador:: crearUsuario() {
     asignarNombre(nombreOut);
 }
 
+void Jugador:: quitarVidas(int vidasASacar) {
+    vidas -= vidasASacar;
+    cout << "Ooops! Incorrecto\nTe quedan " << vidas << " vidas\n";
+}
+
+// ------------------------------ METODOS PRIVADOS ----------------------------------//
 void Jugador:: asignarVidas(int vidasOut) {
     vidas = vidasOut;
 }
 
 void Jugador:: asignarNombre(string nombreOut) {
     nombre = nombreOut;
-}
-
-void Jugador:: quitarVidas(int vidasASacar) {
-    vidas -= vidasASacar;
-    cout << "Ooops! Incorrecto\nTe quedan " << vidas << " vidas\n";
 }
