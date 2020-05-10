@@ -29,24 +29,45 @@ class CharDinamico {
         // POST: Libera la memoria
         ~CharDinamico();
 
+        // PRE: -
+        // POST: Devuelve el tamanio del vector
         int obtenerTamanio();
 
+        // PRE:
+        // POST: Devuelve la palabra
         string obtenerPalabra();
 
+        // PRE: pos >= 0
+        // POST: Devuelve la letra en la posicion pos
         char obtenerElemento(int pos);
 
-        void mostrarPalabra();
-
+        // PRE: palabraOut debe ser un string valido, solo puede contener [a-z]
+        // POST: Le asigna palabraOut a palabra
         void asignarPalabra(string palabraOut);
 
+        // PRE: -
+        // POST: Muestra por pantalla la palabra
+        void mostrarCaracteresSeparadosPorEspacio();
+
+        // PRE: caracter debe ser una letra [a-z] valida, pos >= 0
+        // POST: Inserta caracter en palabra[pos]
         void insertar(char caracter, int pos);
 
+        // PRE: tamanioNuevo > 0
+        // POST: Redimensiona el vector
         void redimensionar(int tamanioNuevo);
 
+        // PRE: c debe ser una letra [a-z]
+        // POST: Devuelve true si c esta en palabra
         bool checkCaracterEnPalabra(char c);
 
     private:
+        // PRE: 0 <= inicio <= final <= tamanio
+        // POST: Asigna NULO al vector desde inicio hasta final
         void asignarNuloAlVector(int inicio, int final);
+
+        // PRE: 0 <= inicio <= final <= tamanio
+        // POST: en palabra coloca los valores del vector palabraOut
         void copiarDatos(char* palabraOut, int inicio, int final);
 };
 
