@@ -2,7 +2,7 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "Jugador.h"
+#include "headers/Jugador.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 // Constructor con parametros
 Jugador:: Jugador(int vidasOut, string nombreOut) {

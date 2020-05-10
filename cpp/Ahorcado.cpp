@@ -2,7 +2,7 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "Ahorcado.h"
+#include "headers/Ahorcado.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 //
 Ahorcado:: Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra),
@@ -37,17 +37,6 @@ void Ahorcado:: nuevoJuego() {
         estadoJuego = PERDIO_JUEGO;
 
     mostrarMensajeGanoOPerdio();
-}
-
-void Ahorcado:: mostrarInstrucciones() {
-    cout << "Objetivo: adivinar la palabra secreta antes de quedarse sin vidas\n"
-            "Instrucciones:\n"
-            "   1. Elegi si queres o no crearte un usuario con tu nombre y cantidad de vidas\n"
-            "   2. Eligi la categoria a la que pertenecera la palabra a adivinar\n"
-            "   3. Intenta adivinar la palabra! Podes arriesgar tanto de a una letra como la palabra entera y puede ser"
-            "tanto en minuscula como en mayuscula (o ambas), pero OJO si arriesgas la palabra entera y no es correcta "
-            "vas a PERDER DOS VIDAS en vez de una.\n"
-            "Buena suerte y que comience el juego!\n";
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {

@@ -2,7 +2,7 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "CharDinamico.h"
+#include "headers/CharDinamico.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 
 // Constructor con parametros

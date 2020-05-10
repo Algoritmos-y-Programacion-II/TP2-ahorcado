@@ -46,10 +46,6 @@ class Ahorcado {
         // POST: Muestra por pantalla un mensaje de despedida
         void mostrarDespedida();
 
-        // PRE: -
-        // POST: Muestra por pantalla las instrucciones
-        void mostrarInstrucciones();
-
     private:
         // PRE: caracter debe ser una letra [a-z]
         // POST: -
