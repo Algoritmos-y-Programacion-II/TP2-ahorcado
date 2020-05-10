@@ -41,7 +41,7 @@ class CharDinamico {
         // POST: Devuelve la letra en la posicion pos
         char obtenerElemento(int pos);
 
-        // PRE: palabraOut debe ser un string valido, solo puede contener [a-z]
+        // PRE: palabraOut debe ser un string valido, solo puede contener [a-zA-Z] (excluyendo la ñ)
         // POST: Le asigna palabraOut a palabra
         void asignarPalabra(string palabraOut);
 
@@ -49,7 +49,7 @@ class CharDinamico {
         // POST: Muestra por pantalla la palabra separados por un espacio
         void mostrarCaracteres();
 
-        // PRE: caracter debe ser una letra [a-z] valida, pos >= 0
+        // PRE: caracter debe ser una letra [a-zA-Z] (excluyendo la ñ) valida, 0 <= pos < tamanio
         // POST: Inserta caracter en palabra[pos]
         void insertarCaracter(char caracter, int pos);
 
@@ -57,7 +57,7 @@ class CharDinamico {
         // POST: Redimensiona el vector
         void redimensionar(int tamanioNuevo);
 
-        // PRE: c debe ser una letra [a-z]
+        // PRE: c debe ser una letra [a-zA-Z] (excluyendo la ñ)
         // POST: Devuelve true si c esta en palabra
         bool checkCaracterEnPalabra(char c);
 
