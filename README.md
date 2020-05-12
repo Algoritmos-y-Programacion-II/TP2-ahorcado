@@ -3,14 +3,15 @@
 Trabajo Practico Individual N2: Ahorcado
 ------------
 
-El juego comienza mostrando guiones en el lugar de cada letra que forma la palabra. El
-jugador puede:
-- Ir arriesgando de a una letra. 
-- Arriesgar un string completo
-En caso de no acertar restará dos intentos.
-El juego finaliza cuando el jugador adivina la palabra (ya sea completando las letras o
-arriesgando la palabra entera) o cuando agota los intentos permitidos. 
+Es el clásico juego del ahorcado.
 
+**COMO JUGAR:**
+1. Decida si desea o no crear un usuario con su nombre y elegir la cantidad de vidas que va a tener. En caso de no crearlo se le asignara el nombre Juan/a Perez y 3 vidas
+2. Elija la categoría a la cual pertenecerá la palabra a adivinar
+3. Intente adivinar la palabra antes de quedarse sin vidas. Puede arriesgar una letra o toda la palabra junta, y pueden utilizarse tanto mayúsculas como minúsculas
+	* En el caso de arriesgar una letra y equivocarse perderá UNA vida
+	* En el caso de arriesgar toda la palabra y equivocarse perdera DOS vidas.
+**Buena suerte!**
 Hecho con C++.
 
 Instalación
