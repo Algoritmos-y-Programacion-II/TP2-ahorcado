@@ -6,8 +6,8 @@
 #define TRABAJOPRACTICO2AHORCADO_AHORCADO_H
 
 
-#include "Jugador.h"
-#include "CharDinamico.h"
+#include "headers/Jugador.h"
+#include "headers/CharDinamico.h"
 
 const int EMPEZO_JUEGO = 0;
 const int GANO_JUEGO = 1;
