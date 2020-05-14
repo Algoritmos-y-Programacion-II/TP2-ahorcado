@@ -11,7 +11,7 @@ CharDinamico:: CharDinamico(int tamanioOut) {
     for (int i = 0; i < tamanio ; i++) {
         insertarCaracter('_', i);
     }
-    cout << "\n--AVISO-- El vector dinamico se almacena en: " << (void*)palabra << endl;
+    cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
 // Constructor con 2 parametros
@@ -19,7 +19,7 @@ CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
     asignarPalabra(palabraOut);
-    cout << "\n--AVISO-- El vector dinamico se almacena en: " << (void*)palabra;
+    cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
 // Constructor de copia
@@ -35,7 +35,7 @@ CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
 CharDinamico:: ~CharDinamico() {
     if (tamanio > 0)
         delete [] palabra;
-    cout << "\n--AVISO-- Se libero la memoria almacenada en: " << (void*)palabra;
+    cout << "\n--AVISO-- Se libero la memoria almacenada en: " << static_cast<void *>(palabra);
 }
 
 string CharDinamico:: obtenerPalabra() {
