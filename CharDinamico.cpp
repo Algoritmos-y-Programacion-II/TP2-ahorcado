@@ -2,15 +2,24 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "headers/CharDinamico.h"
+#include "CharDinamico.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
+// Constructor con 1 parametro
+CharDinamico:: CharDinamico(int tamanioOut) {
+    tamanio = tamanioOut;
+    palabra = new char[tamanio];
+    for (int i = 0; i < tamanio ; i++) {
+        insertarCaracter('_', i);
+    }
+    cout << "\n--AVISO-- El vector dinamico se almacena en: " << (void*)palabra << endl;
+}
 
-// Constructor con parametros
+// Constructor con 2 parametros
 CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
     asignarPalabra(palabraOut);
-    cout << "\n--AVISO-- El vector dinamico se almacena en: " << &palabra << endl;
+    cout << "\n--AVISO-- El vector dinamico se almacena en: " << (void*)palabra;
 }
 
 // Constructor de copia
@@ -26,13 +35,13 @@ CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
 CharDinamico:: ~CharDinamico() {
     if (tamanio > 0)
         delete [] palabra;
-    cout << "\n--AVISO-- Se libero la memoria almacenada en: " << &palabra << endl;
+    cout << "\n--AVISO-- Se libero la memoria almacenada en: " << (void*)palabra;
 }
 
 string CharDinamico:: obtenerPalabra() {
     string palabraStr;
     for (int i = 0; i < tamanio; i++) {
-        palabraStr += toupper(this->palabra[i]);
+        palabraStr += toupper(palabra[i]);
     }
     return palabraStr;
 }
@@ -51,14 +60,14 @@ void CharDinamico:: asignarPalabra(string palabraOut) {
     }
 }
 
+void CharDinamico:: insertarCaracter(char caracter, int pos) {
+    palabra[pos] = caracter;
+}
+
 void CharDinamico:: mostrarCaracteres() {
     for(int i = 0; i < tamanio; i++) {
         cout << palabra[i] << " ";
     }
-}
-
-void CharDinamico:: insertarCaracter(char caracter, int pos) {
-    palabra[pos] = caracter;
 }
 
 void CharDinamico:: redimensionar(int tamanioNuevo) {

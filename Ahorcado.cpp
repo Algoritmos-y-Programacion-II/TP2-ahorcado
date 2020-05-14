@@ -2,48 +2,44 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "headers/Ahorcado.h"
+#include "Ahorcado.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 //
 Ahorcado:: Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra) : palabraAAdivinar(palabraAleatoria, tamanioPalabra),
-                                                                                       palabraSecreta("",0) {
+                                                                                       palabraSecreta(tamanioPalabra) {
     estadoJuego = EMPEZO_JUEGO;
     intentosFallidos = 0;
     jugador = jugadorOut;
-    palabraSecreta.redimensionar(tamanioPalabra);
-    for (int i = 0; i < tamanioPalabra ; i++) {
-        palabraSecreta.insertarCaracter('_', i);
-    }
 }
 
 void Ahorcado:: nuevoJuego() {
 
     string palabraAdivinada;
-    actualizarAhorcado();
 
     while (estadoJuego == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
 
+        actualizarAhorcado();
+
         cout << "Ingresa una letra o palabra: ";
-        palabraAdivinada = obtenerPalabraEnMayusculas();
-        palabraAdivinada = validarPalabra(palabraAdivinada);
+        palabraAdivinada = Utils::obtenerPalabraEnMayusculas();
+        palabraAdivinada = Utils::validarPalabra(palabraAdivinada);
 
         if (palabraAdivinada.length() > 1)
-            arriesgar(palabraAdivinada);
+            arriesgar(palabraAdivinada); // Metodo que recibe string
 
-        else arriesgar(palabraAdivinada[0]);
+        else arriesgar(palabraAdivinada[0]); // Metodo que recibe caracter
     }
-
-    if (jugador.obtenerVidas() <= 0)
-        estadoJuego = PERDIO_JUEGO;
 
     mostrarMensajeGanoOPerdio();
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
     char opcion;
+    bool crear;
     cout << "\nQueres jugar de nuevo? [s/n] ";
     cin >> opcion;
-    return ('s' == opcion || 'S' == opcion);
+    crear = Utils::validarSiONo(opcion);
+    return crear;
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
@@ -65,32 +61,39 @@ void Ahorcado:: mostrarDespedida() {
 // ------------------------------ METODOS PRIVADOS ----------------------------------//
 
 void Ahorcado:: arriesgar(char caracter) {
-    bool coincidio = palabraAAdivinar.checkCaracterEnPalabra(caracter);
     string palabraAux;
 
-    if (coincidio) {
+    if (palabraAAdivinar.checkCaracterEnPalabra(caracter)) {
         for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
             if (caracter == palabraAAdivinar.obtenerElemento(i))
                 palabraSecreta.insertarCaracter(caracter, i);
             }
         if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
             estadoJuego = GANO_JUEGO;
-    } else {
+    }
+    else {
         intentosFallidos++;
         jugador.quitarVidas(1);
+
+        if (jugador.obtenerVidas() <= 0)
+            estadoJuego = PERDIO_JUEGO;
     }
-    actualizarAhorcado();
 }
 
 void Ahorcado:: arriesgar(string palabra) {
+
     if (palabraAAdivinar.obtenerPalabra() == palabra) {
         palabraSecreta.asignarPalabra(palabra);
         estadoJuego = GANO_JUEGO;
-    } else {
+    }
+
+    else {
         intentosFallidos += 2;
         jugador.quitarVidas(2);
+
+        if (jugador.obtenerVidas() <= 0)
+            estadoJuego = PERDIO_JUEGO;
     }
-    actualizarAhorcado();
 }
 
 void Ahorcado:: actualizarAhorcado() {
@@ -101,6 +104,9 @@ void Ahorcado:: actualizarAhorcado() {
 }
 
 void Ahorcado:: mostrarDibujoAhorcado() {
+
+    if (jugador.obtenerVidas() > 0)
+        cout << "\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
 
     switch (intentosFallidos) {
         case 0:

@@ -19,7 +19,7 @@
  *               De esta manera Ahorcado tiene dos atributos de tipo CharDinamico y uno de tipo Jugador.
  */
 
-#include "headers/Ahorcado.h"
+#include "Ahorcado.h"
 
 int main() {
 
@@ -31,7 +31,7 @@ int main() {
     }
 
     do {
-        string palabraAleatoria = elegirPalabraAleatoriaSegunCategoria();
+        string palabraAleatoria = Utils::elegirPalabraAleatoriaSegunCategoria();
         int tamanioPalabra = palabraAleatoria.length();
         Ahorcado ahorcado(jugador, palabraAleatoria, tamanioPalabra);
         ahorcado.nuevoJuego();

@@ -2,11 +2,10 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "headers/utils.h"
-#include <ctime>
-#include <regex>
+#include "Utils.h"
 
-int validarNumero(int min, int max, int num) {
+// ------------------------------ METODOS PUBLICOS ----------------------------------//
+int Utils:: validarNumero(int min, int max, int num) {
     while (num < min || num > max) {
         cout << "El numero esta fuera del rango pedido. Reingresa: ";
         cin >> num;
@@ -14,7 +13,7 @@ int validarNumero(int min, int max, int num) {
     return num;
 }
 
-string validarPalabra(string palabra) {
+string Utils::  validarPalabra(string palabra) {
     regex string("[A-Za-z]+");
     while (!regex_match(palabra, string)) {
         cout << "La palabra ingresada no es valida. Solo puede contener letras minusculas o mayusculas. "
@@ -24,7 +23,15 @@ string validarPalabra(string palabra) {
     return palabra;
 }
 
-string obtenerPalabraEnMayusculas() {
+bool Utils:: validarSiONo(char opcion) {
+    while ('s' != opcion && 'S' != opcion && 'n' != opcion && 'N' != opcion) {
+        cout << "El caracter ingresado no es valido. Reingresa [s/n]: ";
+        cin >> opcion;
+    }
+    return ('s' == opcion || 'S' == opcion) ;
+}
+
+string Utils::  obtenerPalabraEnMayusculas() {
     string palabra, palabraEnMayusculas;
     cin >> palabra;
     for (int i = 0; i < palabra.length(); i++){
@@ -33,25 +40,13 @@ string obtenerPalabraEnMayusculas() {
     return palabraEnMayusculas;
 }
 
-int numeroRandom(int min, int max) {
-    srand(time(NULL));
-    return (min + rand() % (max));
-}
-
-string elegirPalabraAleatoriaSegunCategoria() {
-
-    cout << "\nElegi la tematica de las palabras a adivinar:\n"
-            "1. Verduras\n"
-            "2. Frutas\n"
-            "3. Paises\n"
-            "4. Nombres femeninos\n"
-            "5. Nombres masculinos\n";
-
+string  Utils:: elegirPalabraAleatoriaSegunCategoria() {
+    mostrarCategorias();
     int opcion, random = numeroRandom(0, CANT_PALABRAS);
     string palabra;
     cin >> opcion;
 
-    switch (validarNumero(1, 5, opcion)) {
+    switch (validarNumero(1, 6, opcion)) {
 
         case VERDURAS:
             palabra = PALABRAS_VERDURAS[random];
@@ -72,6 +67,28 @@ string elegirPalabraAleatoriaSegunCategoria() {
         case NOMBRES_MASCULINOS:
             palabra = PALABRAS_NOMBRES_M[random];
             break;
+
+        case COLORES:
+            palabra = PALABRAS_COLORES[random];
+            break;
     }
     return palabra;
+}
+
+// ------------------------------ METODOS PRIVADOS ----------------------------------//
+
+int Utils::  numeroRandom(int min, int max) {
+    srand(time(NULL));
+    return (min + rand() % (max));
+}
+
+void Utils :: mostrarCategorias() {
+
+    cout << "\n\nElegi la tematica de las palabras a adivinar:\n"
+            "1. Verduras\n"
+            "2. Frutas\n"
+            "3. Paises\n"
+            "4. Nombres femeninos\n"
+            "5. Nombres masculinos\n"
+            "6. Colores\n";
 }

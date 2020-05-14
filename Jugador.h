@@ -5,7 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 #define TRABAJOPRACTICO2AHORCADO_JUGADOR_H
 
-#include "headers/utils.h"
+#include "Utils.h"
 
 class Jugador {
     // -------------------------- ATRIBUTOS -------------------------- //

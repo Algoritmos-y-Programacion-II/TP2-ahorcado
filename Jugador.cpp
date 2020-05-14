@@ -2,7 +2,7 @@
 // Created by Valentina on 8/5/2020.
 //
 
-#include "headers/Jugador.h"
+#include "Jugador.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 // Constructor con parametros
 Jugador:: Jugador(int vidasOut, string nombreOut) {
@@ -20,24 +20,26 @@ string Jugador:: obtenerNombre() {
 
 bool Jugador:: deseaCrearUsuario() {
     char opcion;
+    bool crear;
     cout << "\nQueres crear un usuario y elegir la cantidad de vidas? [s/n]\n"
             "--AVISO-- De lo contrario se te asignara el nombre \"Juan/a Perez\" y 3 vidas\n";
     cin >> opcion;
-    return ('s' == opcion || 'S' == opcion);
+    crear = Utils::validarSiONo(opcion);
+    return crear;
 }
 
 int Jugador:: pedirVidas() {
     int vidas;
-    cout << "\nIngresa la cantidad de vidas (max 7): ";
+    cout << "\nIngresa la cantidad de vidas (min 1 y max 7): ";
     cin >> vidas;
-    return validarNumero(1,7, vidas);
+    return Utils::validarNumero(1,7, vidas);
 }
 
 string Jugador:: pedirNombre() {
     string nombre;
     cout << "Ingresa un nombre: ";
     cin >> nombre;
-    return validarPalabra(nombre);
+    return Utils::validarPalabra(nombre);
 }
 
 void Jugador:: crearUsuario() {
@@ -49,7 +51,7 @@ void Jugador:: crearUsuario() {
 
 void Jugador:: quitarVidas(int vidasASacar) {
     vidas -= vidasASacar;
-    cout << "Ooops! Incorrecto\nTe quedan " << vidas << " vidas\n";
+    cout << "Ooops! Incorrecto\n";
 }
 
 // ------------------------------ METODOS PRIVADOS ----------------------------------//
