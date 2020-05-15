@@ -19,11 +19,12 @@ class CharDinamico {
     public:
 
         // PRE: tamanioOut tiene que ser mayor a 1
-        // POST: inicializa palabra con '_'
+        // POST: Construye un vector dinamico de tipo char con '_' en cada espacio de memoria
         CharDinamico(int tamanioOut);
 
         // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor a 1
-        // POST: Crea un vector de tipo char con la palabra palabraOut de tamaño tamanioOut
+        // POST: Construye un vector dinamico de tipo char con la palabra palabraOut de
+        //       tamaño tamanioOut.
         //       Muestra por pantalla en que lugar se reservo la memoria
         CharDinamico(string palabraOut, int tamanioOut);
 

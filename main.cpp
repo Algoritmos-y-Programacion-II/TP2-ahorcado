@@ -4,7 +4,7 @@
  * Hecho por Valentina Varela Rodriguez - 105374
  *
  * COMO JUGAR:
- *            1. Decida si desea o no crear un usuario con su nombre y elegir la cantidad de vidas que va a tener
+ *            1. Decida si desea o no crear un usuario con su nombre
  *            2. Elija la categoria a la cual pertenecera la palabra a adivinar
  *            3. Intente adivinar la palabra antes de quedarse sin vidas.
  *               Puede arriesgar una letra o toda la palabra.
@@ -24,23 +24,31 @@
 int main() {
 
     bool jugarDeNuevo;
+    string palabraAleatoria;
     Jugador jugador;
+    Ahorcado ahorcado;
+
+    ahorcado.mostrarInstrucciones();
 
     if(jugador.deseaCrearUsuario()) {
         jugador.crearUsuario();
     }
 
     do {
-        string palabraAleatoria = Utils::elegirPalabraAleatoriaSegunCategoria();
-        int tamanioPalabra = palabraAleatoria.length();
-        Ahorcado ahorcado(jugador, palabraAleatoria, tamanioPalabra);
+        ahorcado.mostrarCategorias();
+        palabraAleatoria = Utils::elegirPalabraAleatoriaSegunCategoria();
+
+        ahorcado.asignarJugador(jugador);
+        ahorcado.asignarPalabraAAdivinar(palabraAleatoria);
+        ahorcado.asignarPalabraSecreta(palabraAleatoria.size());
+
         ahorcado.nuevoJuego();
 
         jugarDeNuevo = ahorcado.deseaJugarDeNuevo();
-        if (!jugarDeNuevo)
-            ahorcado.mostrarDespedida();
 
     } while (jugarDeNuevo);
+
+    ahorcado.mostrarDespedida();
 
     return 0;
 }

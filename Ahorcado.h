@@ -9,6 +9,7 @@
 #include "Jugador.h"
 #include "CharDinamico.h"
 
+const int NO_EMPEZO_JUEGO = -1;
 const int EMPEZO_JUEGO = 0;
 const int GANO_JUEGO = 1;
 const int PERDIO_JUEGO = 2;
@@ -16,19 +17,16 @@ const int PERDIO_JUEGO = 2;
 class Ahorcado {
     // -------------------------- ATRIBUTOS -------------------------- //
     private:
-        int intentosFallidos, estadoJuego;
+        int estadoJuego;
         CharDinamico palabraAAdivinar, palabraSecreta;
         Jugador jugador;
 
     // -------------------------- METODOS -------------------------- //
     public:
-
-        // PRE: jugadorOut debe ser un jugador valido, tamanioPalabra > 0 y palabraAleatoria != ""
-        // POST: Crea un ahorcado
-        //       Inicializa el jugador con los mismos atributos que jugadorOut,
-        //       Inicializa la palabraAAdivinar con palabra = palabraAleatoria y tamanio = tamanioPalabra
-        //       Inicializa la palabraSecreta con tamanioPalabra cantidad de "_"
-        Ahorcado(Jugador jugadorOut, string palabraAleatoria, int tamanioPalabra);
+        Ahorcado();
+        void asignarJugador(Jugador jugadorOut);
+        void asignarPalabraSecreta(int tamanioOut);
+        void asignarPalabraAAdivinar(string palabra);
 
         // PRE: -
         // POST: Comienza un nuevo juego
@@ -46,6 +44,9 @@ class Ahorcado {
         // POST: Muestra por pantalla un mensaje de despedida
         void mostrarDespedida();
 
+        void mostrarCategorias();
+        void mostrarInstrucciones();
+
     private:
         // PRE: caracter debe ser una letra [a-z]
         // POST: -
@@ -62,8 +63,6 @@ class Ahorcado {
         // PRE: 0 <= fallos <= 7
         // POST: muestra el dibujo
         void mostrarDibujoAhorcado();
-
-
 };
 
 #endif //TRABAJOPRACTICO2AHORCADO_AHORCADO_H

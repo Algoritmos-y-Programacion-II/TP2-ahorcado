@@ -41,7 +41,7 @@ string Utils::  obtenerPalabraEnMayusculas() {
 }
 
 string  Utils:: elegirPalabraAleatoriaSegunCategoria() {
-    mostrarCategorias();
+
     int opcion, random = numeroRandom(0, CANT_PALABRAS);
     string palabra;
     cin >> opcion;
@@ -80,15 +80,4 @@ string  Utils:: elegirPalabraAleatoriaSegunCategoria() {
 int Utils::  numeroRandom(int min, int max) {
     srand(time(NULL));
     return (min + rand() % (max));
-}
-
-void Utils :: mostrarCategorias() {
-
-    cout << "\n\nElegi la tematica de las palabras a adivinar:\n"
-            "1. Verduras\n"
-            "2. Frutas\n"
-            "3. Paises\n"
-            "4. Nombres femeninos\n"
-            "5. Nombres masculinos\n"
-            "6. Colores\n";
 }

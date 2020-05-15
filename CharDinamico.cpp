@@ -55,6 +55,7 @@ int CharDinamico:: obtenerTamanio() {
 }
 
 void CharDinamico:: asignarPalabra(string palabraOut) {
+    redimensionar(palabraOut.size());
     for (int i = 0; i < tamanio; i++) {
         palabra[i] = palabraOut[i];
     }

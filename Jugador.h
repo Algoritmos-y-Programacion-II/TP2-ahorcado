@@ -7,6 +7,8 @@
 
 #include "Utils.h"
 
+const int VIDAS = 7;
+
 class Jugador {
     // -------------------------- ATRIBUTOS -------------------------- //
     private:
@@ -16,9 +18,9 @@ class Jugador {
     // -------------------------- METODOS -------------------------- //
     public:
 
-        // PRE: vidasOut tiene que ser mayor a 3, string tiene que ser valido
+        // PRE: El string tiene que ser valido
         // POST: construye un jugador
-        Jugador(int vidasOut = 3, string nombreOut = "Juan/a Perez");
+        Jugador(string nombreOut = "Juan/a Perez");
 
         // PRE: -
         // POST: Devuelve las vidas del jugador
@@ -47,9 +49,6 @@ class Jugador {
         // PRE: -
         // POST: Devuelve el numero de vidas ingresado por el usuario
         int pedirVidas();
-
-    private:
-        // No me interesa que el usuario acceda a estos metodos, porque las llama el metodo crearUsuario()
 
         // PRE: vidasOut > 0
         // POST: Le asigna vidasOut vidas al jugador
