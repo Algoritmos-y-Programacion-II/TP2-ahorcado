@@ -1,22 +1,15 @@
 /*
- * 75.41/95.15: Algoritmos y Programacion II - Catedra Juarez - 1°C 2020
- * Trabajo Practico Individual N2: Ahorcado
- * Hecho por Valentina Varela Rodriguez - 105374
- *
- * COMO JUGAR:
- *            1. Decida si desea o no crear un usuario con su nombre
- *            2. Elija la categoria a la cual pertenecera la palabra a adivinar
- *            3. Intente adivinar la palabra antes de quedarse sin vidas.
- *               Puede arriesgar una letra o toda la palabra.
- *               Si la letra no esta en la palabra PERDERA UNA vida
- *               Si la palabra no es correcta PERDERA DOS vidas.
- *               Buena suerte!
- *
- * ACLARACION EN CUANTO A LAS CLASES
- *               Decidi utilizar 3 clases: Ahorcado, Jugador y CharDinamico porque me parecia mas prolijo
- *               para ordenar los metodos y atributos. No crei que el metodo insertarCaracter(), por ejemplo,
- *               perteneciera a la clase Ahorcado que corresponde al juego.
- *               De esta manera Ahorcado tiene dos atributos de tipo CharDinamico y uno de tipo Jugador.
+  75.41/95.15: Algoritmos y Programacion II - Catedra Juarez - 1°C 2020
+  Trabajo Practico Individual N2: Ahorcado
+  Hecho por Valentina Varela Rodriguez - 105374
+
+ * ACLARACIONES
+             * Inicialmente Utils era una clase con metodos estaticos y sin atributos, pregunte por el grupo de
+               Telegram y Andy me dijo que la podía dejar. Sin embargo luego de investigar vi que en muchos foros se
+               desaconsejaba ese tipo de clases, y se recomendaba en to do caso utilizar namespaces.
+
+             * El metodo main de la clase Ahorcado es para utilizarse en caso de que no se desee hacer la implementacion
+               del juego en la funcion principal
  */
 
 #include "Ahorcado.h"
@@ -25,26 +18,47 @@ int main() {
 
     bool jugarDeNuevo;
     string palabraAleatoria;
+
     Jugador jugador;
-    Ahorcado ahorcado;
+    Ahorcado ahorcado(jugador);
 
     ahorcado.mostrarInstrucciones();
 
     if(jugador.deseaCrearUsuario()) {
         jugador.crearUsuario();
+        ahorcado.asignarNombreJugador(jugador);
     }
 
     do {
+
+        string palabraIngresada;
+
         ahorcado.mostrarCategorias();
-        palabraAleatoria = Utils::elegirPalabraAleatoriaSegunCategoria();
+        ahorcado.elegirCategoria();
+        ahorcado.elegirPalabraAleatoriaSegunCategoria();
+        ahorcado.actualizarAhorcado();
 
-        ahorcado.asignarJugador(jugador);
-        ahorcado.asignarPalabraAAdivinar(palabraAleatoria);
-        ahorcado.asignarPalabraSecreta(palabraAleatoria.size());
+        while (ahorcado.obtenerEstadoJuego() == EMPEZO_JUEGO && jugador.obtenerVidas() > 0) {
 
-        ahorcado.nuevoJuego();
+            cout << "Ingresa una letra o palabra: ";
+            palabraIngresada = Utils::obtenerPalabraEnMayusculas();
+            Utils::validarPalabra(palabraIngresada);
+
+            if (palabraIngresada.length() > 1)
+                ahorcado.arriesgar(palabraIngresada); // Metodo que recibe string
+
+            else
+                ahorcado.arriesgar(palabraIngresada[0]); // Metodo que recibe caracter
+
+            ahorcado.actualizarAhorcado();
+        }
+
+        ahorcado.mostrarMensajeGanoOPerdio();
 
         jugarDeNuevo = ahorcado.deseaJugarDeNuevo();
+
+        if (jugarDeNuevo)
+            ahorcado.resetearJuego();
 
     } while (jugarDeNuevo);
 

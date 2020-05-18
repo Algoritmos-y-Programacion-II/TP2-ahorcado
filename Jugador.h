@@ -7,8 +7,6 @@
 
 #include "Utils.h"
 
-const int VIDAS = 7;
-
 class Jugador {
     // -------------------------- ATRIBUTOS -------------------------- //
     private:
@@ -18,9 +16,9 @@ class Jugador {
     // -------------------------- METODOS -------------------------- //
     public:
 
-        // PRE: El string tiene que ser valido
-        // POST: construye un jugador
-        Jugador(string nombreOut = "Juan/a Perez");
+        // PRE: El string tiene que ser valido, el entero tiene que ser mayor a cero
+        // POST: Construye un jugador con nombre y vidas
+        Jugador(string nombreOut = "Juan/a Perez", int vidas = 3);
 
         // PRE: -
         // POST: Devuelve las vidas del jugador
@@ -29,6 +27,14 @@ class Jugador {
         // PRE: -
         // POST: Devuelve el nombre del jugador
         string obtenerNombre();
+
+        // PRE: vidasOut > 0
+        // POST: Le asigna vidasOut vidas al jugador
+        void asignarVidas(int vidasOut);
+
+        // PRE: nombreOut != ""
+        // POST: Le asigna nombreOut al jugador
+        void asignarNombre(string nombreOut);
 
         // PRE: vidasASacar > 0
         // POST: Le saca vidasASacar cantidad de vidas al jugador
@@ -49,14 +55,6 @@ class Jugador {
         // PRE: -
         // POST: Devuelve el numero de vidas ingresado por el usuario
         int pedirVidas();
-
-        // PRE: vidasOut > 0
-        // POST: Le asigna vidasOut vidas al jugador
-        void asignarVidas(int vidasOut);
-
-        // PRE: nombreOut != ""
-        // POST: Le asigna nombreOut al jugador
-        void asignarNombre(string nombreOut);
 };
 
 

@@ -27,31 +27,27 @@ const string PALABRAS_NOMBRES_M[CANT_PALABRAS] = {"TOMAS", "PEDRO", "JUAN", "her
 const string PALABRAS_NOMBRES_F[CANT_PALABRAS] = {"VALERIA", "AGUSTINA", "ALEXA", "MARTINA", "MAGALI", "VERONICA", "FLORENCIA", "JOSELINA", "ANDREA", "INES"};
 const string PALABRAS_COLORES[CANT_PALABRAS] = {"AMARILLO", "AZUL", "NARANJA", "ROJO", "VERDE", "VIOLETA", "NEGRO", "BLANCO", "GRIS", "CELESTE"};
 
-class Utils {
+namespace Utils {
 
-    public:
+   bool validarSiONo(char opcion);
 
-        static bool validarSiONo(char opcion);
+    // PRE: -
+    // POST: devuelve una palabra aleatoria segun la categoria elegida por el usuario
+   string elegirPalabraAleatoriaSegunCategoria();
 
-        // PRE: -
-        // POST: devuelve una palabra aleatoria segun la categoria elegida por el usuario
-        static string elegirPalabraAleatoriaSegunCategoria();
+    // PRE: -
+    // POST: Verifica que num este entre min y max, devuelve el numero validado
+   void validarNumero(int min, int max, int &num);
 
-        // PRE: -
-        // POST: Verifica que num este entre min y max, devuelve el numero validado
-        static int validarNumero(int min, int max, int num);
+    // PRE: -
+    // POST: Verifica que la palabra solo contenga letras, devuelve la palabra validada
+   void validarPalabra(string &palabra);
 
-        // PRE: -
-        // POST: Verifica que la palabra solo contenga letras, devuelve la palabra validada
-        static string validarPalabra(string palabra);
+    // PRE: -
+    // POST: Devuelve una palabra ingresada por el usuario pero en mayusculas
+   string obtenerPalabraEnMayusculas();
 
-        // PRE: -
-        // POST: Devuelve una palabra ingresada por el usuario pero en mayusculas
-        static string obtenerPalabraEnMayusculas();
-
-    private:
-        static int numeroRandom(int min, int max);
-        static void mostrarCategorias();
-};
+   int numeroRandom(int min, int max);
+}
 
 #endif //TRABAJOPRACTICO2AHORCADO_UTILS_H

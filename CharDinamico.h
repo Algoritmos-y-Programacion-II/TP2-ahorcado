@@ -9,6 +9,8 @@
 
 using namespace std;
 
+const char NULO = '_';
+
 class CharDinamico {
     // -------------------------- ATRIBUTOS -------------------------- //
     private:
@@ -18,11 +20,11 @@ class CharDinamico {
     // -------------------------- METODOS -------------------------- //
     public:
 
-        // PRE: tamanioOut tiene que ser mayor a 1
-        // POST: Construye un vector dinamico de tipo char con '_' en cada espacio de memoria
+        // PRE: tamanioOut tiene que ser mayor o igual a 0
+        // POST: Construye un vector dinamico de tipo char con tamanioOut cantidad de NULOS
         CharDinamico(int tamanioOut);
 
-        // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor a 1
+        // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor o igual a 0
         // POST: Construye un vector dinamico de tipo char con la palabra palabraOut de
         //       tamaño tamanioOut.
         //       Muestra por pantalla en que lugar se reservo la memoria

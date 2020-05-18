@@ -5,9 +5,9 @@
 #include "Jugador.h"
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 // Constructor con parametros
-Jugador:: Jugador(string nombreOut) {
-    vidas = VIDAS;
+Jugador:: Jugador(string nombreOut, int vidasOut) {
     nombre = nombreOut;
+    vidas = vidasOut;
 }
 
 int Jugador:: obtenerVidas() {
@@ -32,14 +32,16 @@ int Jugador:: pedirVidas() {
     int vidas;
     cout << "\nIngresa la cantidad de vidas (min 1 y max 7): ";
     cin >> vidas;
-    return Utils::validarNumero(1,7, vidas);
+    Utils::validarNumero(1,7, vidas);
+    return vidas;
 }
 
 string Jugador:: pedirNombre() {
     string nombre;
     cout << "Ingresa un nombre: ";
     cin >> nombre;
-    return Utils::validarPalabra(nombre);
+    Utils::validarPalabra(nombre);
+    return nombre;
 }
 
 void Jugador:: crearUsuario() {

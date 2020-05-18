@@ -9,7 +9,7 @@ CharDinamico:: CharDinamico(int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
     for (int i = 0; i < tamanio ; i++) {
-        insertarCaracter('_', i);
+        insertarCaracter(NULO, i);
     }
     cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
