@@ -9,7 +9,6 @@
 #include "Jugador.h"
 #include "CharDinamico.h"
 
-const int NO_EMPEZO_JUEGO = -1;
 const int EMPEZO_JUEGO = 0;
 const int GANO_JUEGO = 1;
 const int PERDIO_JUEGO = 2;
@@ -33,6 +32,10 @@ class Ahorcado {
         // POST: Construye un ahorcado con el jugadorOut, asignandole CANT_VIDAS al jugador, e inicializando
         //       estadoJuego en EMPEZO_JUEGO
         Ahorcado(Jugador jugadorOut);
+
+        // PRE: -
+        // POST: Es la estructura del juego, utilizar este metodo si no se desea implementar la logica en el main
+        void main();
 
         // PRE: jugadorOut tiene que ser un objeto valido
         // POST: Le asigna el nombre de jugadorOut al atributo jugador
@@ -58,6 +61,10 @@ class Ahorcado {
         // POST: Devuelve la categoria
         int obtenerCategoria();
 
+        // PRE: -
+        // POST: Devuelve el jugador
+        Jugador obtenerJugador();
+
         void elegirCategoria();
 
         void elegirPalabraAleatoriaSegunCategoria();
@@ -71,11 +78,6 @@ class Ahorcado {
         // PRE: -
         // POST: Si el usuario ingresa s, devuelve true, de lo contrario false
         bool deseaJugarDeNuevo();
-
-        // PRE: -
-        // POST: Comienza un juego. Es la estructura del juego, utilizar este metodo si no se desea implementar la
-        //       logica en el main
-        void main();
 
         // PRE: -
         // POST: Muestra por pantalla las instrucciones
