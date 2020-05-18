@@ -3,13 +3,18 @@
 //
 
 #include "Jugador.h"
+
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
-// Constructor con parametros
+
+// <--------------------- constructor
 Jugador:: Jugador(string nombreOut, int vidasOut) {
     nombre = nombreOut;
     vidas = vidasOut;
 }
+// -------------------------------->
 
+
+// <--------------------- getters
 int Jugador:: obtenerVidas() {
     return vidas;
 }
@@ -17,7 +22,21 @@ int Jugador:: obtenerVidas() {
 string Jugador:: obtenerNombre() {
     return nombre;
 }
+// -------------------------------->
 
+
+// <--------------------- setters
+void Jugador:: asignarVidas(int vidasOut) {
+    vidas = vidasOut;
+}
+
+void Jugador:: asignarNombre(string nombreOut) {
+    nombre = nombreOut;
+}
+// -------------------------------->
+
+
+// <--------------------- otros metodos
 bool Jugador:: deseaCrearUsuario() {
     char opcion;
     bool crear;
@@ -28,14 +47,6 @@ bool Jugador:: deseaCrearUsuario() {
     return crear;
 }
 
-int Jugador:: pedirVidas() {
-    int vidas;
-    cout << "\nIngresa la cantidad de vidas (min 1 y max 7): ";
-    cin >> vidas;
-    Utils::validarNumero(1,7, vidas);
-    return vidas;
-}
-
 string Jugador:: pedirNombre() {
     string nombre;
     cout << "Ingresa un nombre: ";
@@ -44,21 +55,8 @@ string Jugador:: pedirNombre() {
     return nombre;
 }
 
-void Jugador:: crearUsuario() {
-    string nombreOut = pedirNombre();
-    nombre = nombreOut;
-}
-
 void Jugador:: quitarVidas(int vidasASacar) {
     vidas -= vidasASacar;
     cout << "Ooops! Incorrecto\n";
 }
-
-// ------------------------------ METODOS PRIVADOS ----------------------------------//
-void Jugador:: asignarVidas(int vidasOut) {
-    vidas = vidasOut;
-}
-
-void Jugador:: asignarNombre(string nombreOut) {
-    nombre = nombreOut;
-}
+// -------------------------------->

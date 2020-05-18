@@ -3,13 +3,19 @@
   Trabajo Practico Individual N2: Ahorcado
   Hecho por Valentina Varela Rodriguez - 105374
 
- * ACLARACIONES
-             * Inicialmente Utils era una clase con metodos estaticos y sin atributos, pregunte por el grupo de
-               Telegram y Andy me dijo que la podía dejar. Sin embargo luego de investigar vi que en muchos foros se
-               desaconsejaba ese tipo de clases, y se recomendaba en to do caso utilizar namespaces.
-
-             * El metodo main de la clase Ahorcado es para utilizarse en caso de que no se desee hacer la implementacion
-               del juego en la funcion principal
+ * ACLARACION
+             * Utils inicialmente era una clase con metodos estaticos y sin atributos, pregunte por el grupo de
+               Telegram y Andy me dijo que la podía dejar así.
+               Sin embargo había algo en esto que no me terminaba de cerrar y luego de investigar vi que en varios foros
+               se desaconsejaba ese tipo de clases, muy utilizadas cuando se pasa de programar de manera estructurada a
+               poo, porque probablemente son metodos que podrian implementarse de manera más "elegante" y teniendo
+               en cuenta los objetivos del paradigma.
+               En caso de "necesitar" o mejor dicho querer implementar una clase de ese estilo, recomendaban utilizar
+               un namespace y eso fue lo que hice.
+               Links:
+               https://www.vojtechruzicka.com/avoid-utility-classes/
+               https://stackoverflow.com/questions/3070805/c-how-to-design-a-utility-class
+               https://softwareengineering.stackexchange.com/questions/134540/are-utility-classes-with-nothing-but-static-members-an-anti-pattern-in-c
  */
 
 #include "Ahorcado.h"
@@ -25,8 +31,7 @@ int main() {
     ahorcado.mostrarInstrucciones();
 
     if(jugador.deseaCrearUsuario()) {
-        jugador.crearUsuario();
-        ahorcado.asignarNombreJugador(jugador);
+        ahorcado.asignarNombreJugador(jugador.pedirNombre());
     }
 
     do {
