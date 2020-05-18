@@ -3,8 +3,10 @@
 //
 
 #include "Ahorcado.h"
-// ------------------------------ METODOS PUBLICOS ----------------------------------//
-// Constructor
+
+// ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
+
+// --------------------- constructores
 Ahorcado:: Ahorcado() : palabraAAdivinar(0),
                         palabraSecreta(0) {
     estadoJuego = EMPEZO_JUEGO;
@@ -16,7 +18,10 @@ Ahorcado:: Ahorcado(Jugador jugadorOut) : palabraAAdivinar(0),
     jugador.asignarVidas(CANT_VIDAS);
     estadoJuego = EMPEZO_JUEGO;
 }
+// ---------------------
 
+
+// --------------------- setters
 void Ahorcado:: asignarNombreJugador(Jugador jugadorOut) {
     jugador.asignarNombre(jugadorOut.obtenerNombre());
 }
@@ -34,6 +39,13 @@ void Ahorcado:: asignarPalabraAAdivinar(string palabra) {
     estadoJuego = EMPEZO_JUEGO;
 }
 
+void Ahorcado:: asignarCategoria(int opcion) {
+    categoria = opcion;
+}
+// ---------------------
+
+
+// --------------------- getters
 int Ahorcado:: obtenerEstadoJuego() {
     return estadoJuego;
 }
@@ -42,53 +54,13 @@ int Ahorcado:: obtenerCategoria() {
     return categoria;
 }
 
-void Ahorcado:: elegirCategoria() {
-    cout << "Que categoria preferis? ";
-    cin >> categoria;
-    Utils::validarNumero(1, 6, categoria);
+Jugador Ahorcado:: obtenerJugador() {
+    return jugador;
 }
+// ---------------------
 
-void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
 
-    int random = Utils::numeroRandom(0, CANT_PALABRAS);
-    string palabra;
-
-    switch (categoria) {
-
-        case VERDURAS:
-            palabra = PALABRAS_VERDURAS[random];
-            break;
-
-        case FRUTAS:
-            palabra = PALABRAS_FRUTAS[random];
-            break;
-
-        case PAISES:
-            palabra = PALABRAS_PAISES[random];
-            break;
-
-        case NOMBRES_FEMENINOS:
-            palabra = PALABRAS_NOMBRES_F[random];
-            break;
-
-        case NOMBRES_MASCULINOS:
-            palabra = PALABRAS_NOMBRES_M[random];
-            break;
-
-        case COLORES:
-            palabra = PALABRAS_COLORES[random];
-            break;
-    }
-
-    palabraAAdivinar.asignarPalabra(palabra);
-    asignarPalabraSecreta(palabra.length());
-}
-
-void Ahorcado:: resetearJuego() {
-    jugador.asignarVidas(CANT_VIDAS);
-    estadoJuego = EMPEZO_JUEGO;
-}
-
+// --------------------- metodos para no implementar la logica en la funcion principal
 void Ahorcado:: main() {
 
     bool jugarDeNuevo;
@@ -140,9 +112,20 @@ void Ahorcado:: nuevoJuego() {
 
     mostrarMensajeGanoOPerdio();
 }
+// ---------------------
 
-void Ahorcado:: asignarCategoria(int opcion) {
-    categoria = opcion;
+
+// ---------------------  otros metodos
+void Ahorcado:: actualizarAhorcado() {
+    mostrarDibujoAhorcado();
+    cout << "             ";
+    palabraSecreta.mostrarCaracteres();
+    cout << "\n+==================================+\n\n";
+}
+
+void Ahorcado:: resetearJuego() {
+    jugador.asignarVidas(CANT_VIDAS);
+    estadoJuego = EMPEZO_JUEGO;
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
@@ -153,7 +136,92 @@ bool Ahorcado:: deseaJugarDeNuevo() {
     crear = Utils::validarSiONo(opcion);
     return crear;
 }
+// ---------------------
 
+
+// --------------------- metodos para elegir
+void Ahorcado:: elegirCategoria() {
+    cout << "Que categoria preferis? ";
+    cin >> categoria;
+    Utils::validarNumero(1, 6, categoria);
+}
+
+void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
+
+    int random = Utils::numeroRandom(0, CANT_PALABRAS);
+    string palabra;
+
+    switch (categoria) {
+
+        case VERDURAS:
+            palabra = PALABRAS_VERDURAS[random];
+            break;
+
+        case FRUTAS:
+            palabra = PALABRAS_FRUTAS[random];
+            break;
+
+        case PAISES:
+            palabra = PALABRAS_PAISES[random];
+            break;
+
+        case NOMBRES_FEMENINOS:
+            palabra = PALABRAS_NOMBRES_F[random];
+            break;
+
+        case NOMBRES_MASCULINOS:
+            palabra = PALABRAS_NOMBRES_M[random];
+            break;
+
+        case COLORES:
+            palabra = PALABRAS_COLORES[random];
+            break;
+    }
+
+    palabraAAdivinar.asignarPalabra(palabra);
+    asignarPalabraSecreta(palabra.length());
+}
+// ---------------------
+
+
+// --------------------- arriesgar
+void Ahorcado:: arriesgar(char caracter) {
+    string palabraAux;
+
+    if (palabraAAdivinar.checkCaracterEnPalabra(caracter)) {
+        for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
+            if (caracter == palabraAAdivinar.obtenerElemento(i))
+                palabraSecreta.insertarCaracter(caracter, i);
+            }
+        if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
+            estadoJuego = GANO_JUEGO;
+    }
+    else {
+        jugador.quitarVidas(1);
+
+        if (jugador.obtenerVidas() <= 0)
+            estadoJuego = PERDIO_JUEGO;
+    }
+}
+
+void Ahorcado:: arriesgar(string palabra) {
+
+    if (palabraAAdivinar.obtenerPalabra() == palabra) {
+        palabraSecreta.asignarPalabra(palabra);
+        estadoJuego = GANO_JUEGO;
+    }
+
+    else {
+        jugador.quitarVidas(2);
+
+        if (jugador.obtenerVidas() <= 0)
+            estadoJuego = PERDIO_JUEGO;
+    }
+}
+// ---------------------
+
+
+// --------------------- mostrar mensajes
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
     string nombre = jugador.obtenerNombre();
     if (estadoJuego == GANO_JUEGO)  {
@@ -198,49 +266,6 @@ void Ahorcado:: mostrarInstrucciones() {
             "               Si la letra no esta en la palabra PERDERA UNA vida\n"
             "               Si la palabra no es correcta PERDERA DOS vidas\n"
             "               Buena suerte!\n";
-}
-
-// ------------------------------ METODOS PRIVADOS ----------------------------------//
-
-void Ahorcado:: arriesgar(char caracter) {
-    string palabraAux;
-
-    if (palabraAAdivinar.checkCaracterEnPalabra(caracter)) {
-        for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
-            if (caracter == palabraAAdivinar.obtenerElemento(i))
-                palabraSecreta.insertarCaracter(caracter, i);
-            }
-        if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
-            estadoJuego = GANO_JUEGO;
-    }
-    else {
-        jugador.quitarVidas(1);
-
-        if (jugador.obtenerVidas() <= 0)
-            estadoJuego = PERDIO_JUEGO;
-    }
-}
-
-void Ahorcado:: arriesgar(string palabra) {
-
-    if (palabraAAdivinar.obtenerPalabra() == palabra) {
-        palabraSecreta.asignarPalabra(palabra);
-        estadoJuego = GANO_JUEGO;
-    }
-
-    else {
-        jugador.quitarVidas(2);
-
-        if (jugador.obtenerVidas() <= 0)
-            estadoJuego = PERDIO_JUEGO;
-    }
-}
-
-void Ahorcado:: actualizarAhorcado() {
-    mostrarDibujoAhorcado();
-    cout << "             ";
-    palabraSecreta.mostrarCaracteres();
-    cout << "\n+==================================+\n\n";
 }
 
 void Ahorcado:: mostrarDibujoAhorcado() {
@@ -404,3 +429,4 @@ void Ahorcado:: mostrarDibujoAhorcado() {
 
     }
 }
+// ---------------------
