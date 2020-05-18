@@ -22,6 +22,7 @@ class CharDinamico {
 
         // PRE: tamanioOut tiene que ser mayor o igual a 0
         // POST: Construye un vector dinamico de tipo char con tamanioOut cantidad de NULOS
+        //       Muestra por pantalla en que lugar se reservo la memoria
         CharDinamico(int tamanioOut);
 
         // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor o igual a 0
@@ -34,6 +35,7 @@ class CharDinamico {
 
         // PRE: -
         // POST: Libera la memoria
+        //       Muestra por pantalla de que lugar se libero la memoria
         ~CharDinamico();
 
         // PRE: -
