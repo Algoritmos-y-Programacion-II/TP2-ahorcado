@@ -6,7 +6,7 @@
 
 // ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
 
-// --------------------- constructores
+// <--------------------- constructores
 Ahorcado:: Ahorcado() : palabraAAdivinar(0),
                         palabraSecreta(0) {
     estadoJuego = EMPEZO_JUEGO;
@@ -18,10 +18,10 @@ Ahorcado:: Ahorcado(Jugador jugadorOut) : palabraAAdivinar(0),
     jugador.asignarVidas(CANT_VIDAS);
     estadoJuego = EMPEZO_JUEGO;
 }
-// ---------------------
+// -------------------------------->
 
 
-// --------------------- setters
+// <--------------------- setters
 void Ahorcado:: asignarNombreJugador(Jugador jugadorOut) {
     jugador.asignarNombre(jugadorOut.obtenerNombre());
 }
@@ -42,10 +42,10 @@ void Ahorcado:: asignarPalabraAAdivinar(string palabra) {
 void Ahorcado:: asignarCategoria(int opcion) {
     categoria = opcion;
 }
-// ---------------------
+// -------------------------------->
 
 
-// --------------------- getters
+// <--------------------- getters
 int Ahorcado:: obtenerEstadoJuego() {
     return estadoJuego;
 }
@@ -57,10 +57,10 @@ int Ahorcado:: obtenerCategoria() {
 Jugador Ahorcado:: obtenerJugador() {
     return jugador;
 }
-// ---------------------
+// -------------------------------->
 
 
-// --------------------- metodos para no implementar la logica en la funcion principal
+// <--------------------- metodos para NO implementar la logica en la funcion principal
 void Ahorcado:: main() {
 
     bool jugarDeNuevo;
@@ -68,7 +68,7 @@ void Ahorcado:: main() {
     mostrarInstrucciones();
 
     if(jugador.deseaCrearUsuario()) {
-        jugador.crearUsuario();
+        jugador.asignarNombre(jugador.pedirNombre());
     }
 
     jugador.asignarVidas(CANT_VIDAS);
@@ -112,34 +112,10 @@ void Ahorcado:: nuevoJuego() {
 
     mostrarMensajeGanoOPerdio();
 }
-// ---------------------
+// -------------------------------->
 
 
-// ---------------------  otros metodos
-void Ahorcado:: actualizarAhorcado() {
-    mostrarDibujoAhorcado();
-    cout << "             ";
-    palabraSecreta.mostrarCaracteres();
-    cout << "\n+==================================+\n\n";
-}
-
-void Ahorcado:: resetearJuego() {
-    jugador.asignarVidas(CANT_VIDAS);
-    estadoJuego = EMPEZO_JUEGO;
-}
-
-bool Ahorcado:: deseaJugarDeNuevo() {
-    char opcion;
-    bool crear;
-    cout << "\nQueres jugar de nuevo? [s/n] ";
-    cin >> opcion;
-    crear = Utils::validarSiONo(opcion);
-    return crear;
-}
-// ---------------------
-
-
-// --------------------- metodos para elegir
+// <--------------------- metodos para elegir
 void Ahorcado:: elegirCategoria() {
     cout << "Que categoria preferis? ";
     cin >> categoria;
@@ -181,10 +157,10 @@ void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
     palabraAAdivinar.asignarPalabra(palabra);
     asignarPalabraSecreta(palabra.length());
 }
-// ---------------------
+// -------------------------------->
 
 
-// --------------------- arriesgar
+// <--------------------- metodos para arriesgar
 void Ahorcado:: arriesgar(char caracter) {
     string palabraAux;
 
@@ -218,10 +194,60 @@ void Ahorcado:: arriesgar(string palabra) {
             estadoJuego = PERDIO_JUEGO;
     }
 }
-// ---------------------
+// -------------------------------->
 
 
-// --------------------- mostrar mensajes
+// <---------------------  otros metodos
+void Ahorcado:: actualizarAhorcado() {
+    mostrarDibujoAhorcado();
+    cout << "             ";
+    palabraSecreta.mostrarCaracteres();
+    cout << "\n+==================================+\n\n";
+}
+
+void Ahorcado:: resetearJuego() {
+    jugador.asignarVidas(CANT_VIDAS);
+    estadoJuego = EMPEZO_JUEGO;
+}
+
+bool Ahorcado:: deseaJugarDeNuevo() {
+    char opcion;
+    bool crear;
+    cout << "\nQueres jugar de nuevo? [s/n] ";
+    cin >> opcion;
+    crear = Utils::validarSiONo(opcion);
+    return crear;
+}
+// -------------------------------->
+
+
+// <--------------------- mostrar mensajes
+void Ahorcado:: mostrarInstrucciones() {
+    cout << "\n\n    _   _  _  ___  ___  ___   _   ___   ___  \n"
+            "   /_\\ | || |/ _ \\| _ \\/ __| /_\\ |   \\ / _ \\ \n"
+            "  / _ \\| __ | (_) |   / (__ / _ \\| |) | (_) |\n"
+            " /_/ \\_\\_||_|\\___/|_|_\\\\___/_/ \\_\\___/ \\___/ \n\n";
+    cout << "COMO JUGAR:\n"
+            "            1. Decida si desea o no crear un usuario con su nombre\n"
+            "            2. Elija la categoria a la cual pertenecera la palabra a adivinar\n"
+            "            3. Intente adivinar la palabra antes de quedarse sin vidas (tendra 7)\n"
+            "               Puede arriesgar una letra o toda la palabra\n"
+            "               Si la letra no esta en la palabra PERDERA UNA vida\n"
+            "               Si la palabra no es correcta PERDERA DOS vidas\n"
+            "               Buena suerte!\n";
+}
+
+void Ahorcado:: mostrarCategorias() {
+
+    cout << "\nElegi la tematica de las palabras a adivinar:\n"
+            "1. Verduras\n"
+            "2. Frutas\n"
+            "3. Paises\n"
+            "4. Nombres femeninos\n"
+            "5. Nombres masculinos\n"
+            "6. Colores\n";
+}
+
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
     string nombre = jugador.obtenerNombre();
     if (estadoJuego == GANO_JUEGO)  {
@@ -240,32 +266,6 @@ void Ahorcado:: mostrarMensajeGanoOPerdio() {
 void Ahorcado:: mostrarDespedida() {
     cout << "\nGracias por haber jugado al ahorcado "
          << jugador.obtenerNombre() << "!\nNos vemos la proxima :D\n";
-}
-
-void Ahorcado:: mostrarCategorias() {
-
-    cout << "\nElegi la tematica de las palabras a adivinar:\n"
-            "1. Verduras\n"
-            "2. Frutas\n"
-            "3. Paises\n"
-            "4. Nombres femeninos\n"
-            "5. Nombres masculinos\n"
-            "6. Colores\n";
-}
-
-void Ahorcado:: mostrarInstrucciones() {
-    cout << "\n\n    _   _  _  ___  ___  ___   _   ___   ___  \n"
-            "   /_\\ | || |/ _ \\| _ \\/ __| /_\\ |   \\ / _ \\ \n"
-            "  / _ \\| __ | (_) |   / (__ / _ \\| |) | (_) |\n"
-            " /_/ \\_\\_||_|\\___/|_|_\\\\___/_/ \\_\\___/ \\___/ \n\n";
-    cout << "COMO JUGAR:\n"
-            "            1. Decida si desea o no crear un usuario con su nombre\n"
-            "            2. Elija la categoria a la cual pertenecera la palabra a adivinar\n"
-            "            3. Intente adivinar la palabra antes de quedarse sin vidas (tendra 7)\n"
-            "               Puede arriesgar una letra o toda la palabra\n"
-            "               Si la letra no esta en la palabra PERDERA UNA vida\n"
-            "               Si la palabra no es correcta PERDERA DOS vidas\n"
-            "               Buena suerte!\n";
 }
 
 void Ahorcado:: mostrarDibujoAhorcado() {
@@ -429,4 +429,4 @@ void Ahorcado:: mostrarDibujoAhorcado() {
 
     }
 }
-// ---------------------
+// -------------------------------->

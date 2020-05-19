@@ -72,10 +72,6 @@ class Ahorcado {
         void resetearJuego();
 
         // PRE: -
-        // POST: Comienza un nuevo juego
-        void nuevoJuego();
-
-        // PRE: -
         // POST: Si el usuario ingresa s, devuelve true, de lo contrario false
         bool deseaJugarDeNuevo();
 
@@ -110,6 +106,12 @@ class Ahorcado {
         // PRE: 0 <= fallos <= 7
         // POST: muestra el dibujo
         void mostrarDibujoAhorcado();
+
+    private:
+
+        // PRE: -
+        // POST: Comienza un nuevo juego
+        void nuevoJuego();
 };
 
 #endif //TRABAJOPRACTICO2AHORCADO_AHORCADO_H

@@ -45,16 +45,8 @@ class Jugador {
         bool deseaCrearUsuario();
 
         // PRE: -
-        // POST: crea un usuario
-        void crearUsuario();
-
-        // PRE: -
         // POST: Devuelve el nombre ingresado por el usuario
         string pedirNombre();
-
-        // PRE: -
-        // POST: Devuelve el numero de vidas ingresado por el usuario
-        int pedirVidas();
 };
 
 
