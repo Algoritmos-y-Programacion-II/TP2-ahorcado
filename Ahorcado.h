@@ -34,6 +34,7 @@ class Ahorcado {
     // -------------------------- ATRIBUTOS -------------------------- //
     private:
         int estadoJuego, categoria;
+        string letrasErroneas;
         CharDinamico palabraAAdivinar, palabraSecreta;
         Jugador jugador;
 
@@ -80,6 +81,10 @@ class Ahorcado {
         // PRE: -
         // POST: Devuelve el jugador
         Jugador obtenerJugador();
+
+        // PRE: -
+        // POST: Devuelve las letras erroneas
+        string obtenerLetrasErroneas();
 
         void elegirCategoria();
 

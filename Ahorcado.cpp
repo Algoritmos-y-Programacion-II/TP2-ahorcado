@@ -10,6 +10,7 @@
 Ahorcado:: Ahorcado() : palabraAAdivinar(0),
                         palabraSecreta(0) {
     estadoJuego = EMPEZO_JUEGO;
+    letrasErroneas = "";
 }
 
 Ahorcado:: Ahorcado(Jugador jugadorOut) : palabraAAdivinar(0),
@@ -56,6 +57,10 @@ int Ahorcado:: obtenerCategoria() {
 
 Jugador Ahorcado:: obtenerJugador() {
     return jugador;
+}
+
+string Ahorcado:: obtenerLetrasErroneas() {
+    return letrasErroneas;
 }
 // -------------------------------->
 
@@ -165,10 +170,13 @@ void Ahorcado:: arriesgar(char caracter) {
     string palabraAux;
 
     if (palabraAAdivinar.checkCaracterEnPalabra(caracter)) {
+
         for (int i = 0; i < palabraAAdivinar.obtenerTamanio(); i++) {
+
             if (caracter == palabraAAdivinar.obtenerElemento(i))
                 palabraSecreta.insertarCaracter(caracter, i);
-            }
+        }
+
         if (palabraSecreta.obtenerPalabra() == palabraAAdivinar.obtenerPalabra())
             estadoJuego = GANO_JUEGO;
     }
@@ -177,6 +185,8 @@ void Ahorcado:: arriesgar(char caracter) {
 
         if (jugador.obtenerVidas() <= 0)
             estadoJuego = PERDIO_JUEGO;
+
+        letrasErroneas = letrasErroneas + caracter + " ";
     }
 }
 
@@ -202,7 +212,8 @@ void Ahorcado:: actualizarAhorcado() {
     mostrarDibujoAhorcado();
     cout << "             ";
     palabraSecreta.mostrarCaracteres();
-    cout << "\n+==================================+\n\n";
+    cout << "\n+==================================+\n";
+    cout << "Letras ingresadas que no forman parte de la palabra:\n" << letrasErroneas << "\n\n";
 }
 
 void Ahorcado:: resetearJuego() {
