@@ -1,5 +1,5 @@
 //
-// Created by Valentina on 8/5/2020.
+// Created by Valentina on 17/5/2020.
 //
 
 #ifndef TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
@@ -8,6 +8,8 @@
 #include <iostream>
 
 using namespace std;
+
+const char NULO = '_';
 
 class CharDinamico {
     // -------------------------- ATRIBUTOS -------------------------- //
@@ -18,11 +20,12 @@ class CharDinamico {
     // -------------------------- METODOS -------------------------- //
     public:
 
-        // PRE: tamanioOut tiene que ser mayor a 1
-        // POST: Construye un vector dinamico de tipo char con '_' en cada espacio de memoria
+        // PRE: tamanioOut tiene que ser mayor o igual a 0
+        // POST: Construye un vector dinamico de tipo char con tamanioOut cantidad de NULOS
+        //       Muestra por pantalla en que lugar se reservo la memoria
         CharDinamico(int tamanioOut);
 
-        // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor a 1
+        // PRE: palabraOut tiene que ser distinto de "" y tamanioOut mayor o igual a 0
         // POST: Construye un vector dinamico de tipo char con la palabra palabraOut de
         //       tamaño tamanioOut.
         //       Muestra por pantalla en que lugar se reservo la memoria
@@ -32,6 +35,7 @@ class CharDinamico {
 
         // PRE: -
         // POST: Libera la memoria
+        //       Muestra por pantalla de que lugar se libero la memoria
         ~CharDinamico();
 
         // PRE: -
@@ -75,6 +79,5 @@ class CharDinamico {
         // POST: en palabra coloca los valores del vector palabraOut
         void copiarDatos(char* palabraOut, int inicio, int final);
 };
-
 
 #endif //TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H

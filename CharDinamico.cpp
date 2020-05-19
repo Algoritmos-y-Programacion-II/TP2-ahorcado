@@ -1,20 +1,21 @@
 //
-// Created by Valentina on 8/5/2020.
+// Created by Valentina on 17/5/2020.
 //
 
 #include "CharDinamico.h"
+
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
-// Constructor con 1 parametro
+
+// <--------------------- constructores y destructor
 CharDinamico:: CharDinamico(int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
     for (int i = 0; i < tamanio ; i++) {
-        insertarCaracter('_', i);
+        insertarCaracter(NULO, i);
     }
     cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
-// Constructor con 2 parametros
 CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
@@ -22,7 +23,6 @@ CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
-// Constructor de copia
 CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
     tamanio = palabraOut.tamanio;
     if (tamanio > 0) {
@@ -31,13 +31,15 @@ CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
     } else palabra = 0;
 }
 
-// Destructor
 CharDinamico:: ~CharDinamico() {
     if (tamanio > 0)
         delete [] palabra;
     cout << "\n--AVISO-- Se libero la memoria almacenada en: " << static_cast<void *>(palabra);
 }
+// -------------------------------->
 
+
+// <--------------------- getters
 string CharDinamico:: obtenerPalabra() {
     string palabraStr;
     for (int i = 0; i < tamanio; i++) {
@@ -53,14 +55,20 @@ char CharDinamico:: obtenerElemento(int pos) {
 int CharDinamico:: obtenerTamanio() {
     return tamanio;
 }
+// -------------------------------->
 
+
+// <--------------------- setters
 void CharDinamico:: asignarPalabra(string palabraOut) {
     redimensionar(palabraOut.size());
     for (int i = 0; i < tamanio; i++) {
         palabra[i] = palabraOut[i];
     }
 }
+// -------------------------------->
 
+
+// <--------------------- otros metodos
 void CharDinamico:: insertarCaracter(char caracter, int pos) {
     palabra[pos] = caracter;
 }
@@ -92,7 +100,6 @@ bool CharDinamico:: checkCaracterEnPalabra(char c) {
     return charEstaEnString;
 }
 
-// ------------------------------ METODOS PRIVADOS ----------------------------------//
 void CharDinamico:: asignarNuloAlVector(int inicio, int final) {
     if (tamanio > 0)
         for (int i = inicio; i < final; i++)
@@ -104,3 +111,4 @@ void CharDinamico:: copiarDatos(char* vec, int inicio, int final) {
         for (int i = inicio; i < final; i++)
             palabra[i] = vec[i];
 }
+// -------------------------------->
