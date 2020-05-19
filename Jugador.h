@@ -1,5 +1,5 @@
 //
-// Created by Valentina on 8/5/2020.
+// Created by Valentina on 17/5/2020.
 //
 
 #ifndef TRABAJOPRACTICO2AHORCADO_JUGADOR_H

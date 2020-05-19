@@ -28,6 +28,7 @@ int main() {
     Jugador jugador;
     Ahorcado ahorcado(jugador);
 
+    ahorcado.mostrarLogo();
     ahorcado.mostrarInstrucciones();
 
     if(jugador.deseaCrearUsuario()) {

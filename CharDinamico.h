@@ -1,5 +1,5 @@
 //
-// Created by Valentina on 8/5/2020.
+// Created by Valentina on 17/5/2020.
 //
 
 #ifndef TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
@@ -79,6 +79,5 @@ class CharDinamico {
         // POST: en palabra coloca los valores del vector palabraOut
         void copiarDatos(char* palabraOut, int inicio, int final);
 };
-
 
 #endif //TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H

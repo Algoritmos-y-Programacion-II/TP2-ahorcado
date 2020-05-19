@@ -1,5 +1,5 @@
 //
-// Created by Valentina on 8/5/2020.
+// Created by Valentina on 17/5/2020.
 //
 
 #include "Ahorcado.h"
@@ -222,11 +222,14 @@ bool Ahorcado:: deseaJugarDeNuevo() {
 
 
 // <--------------------- mostrar mensajes
-void Ahorcado:: mostrarInstrucciones() {
+void Ahorcado:: mostrarLogo() {
+
     cout << "\n\n    _   _  _  ___  ___  ___   _   ___   ___  \n"
             "   /_\\ | || |/ _ \\| _ \\/ __| /_\\ |   \\ / _ \\ \n"
             "  / _ \\| __ | (_) |   / (__ / _ \\| |) | (_) |\n"
             " /_/ \\_\\_||_|\\___/|_|_\\\\___/_/ \\_\\___/ \\___/ \n\n";
+}
+void Ahorcado:: mostrarInstrucciones() {
     cout << "COMO JUGAR:\n"
             "            1. Decida si desea o no crear un usuario con su nombre\n"
             "            2. Elija la categoria a la cual pertenecera la palabra a adivinar\n"
