@@ -5,6 +5,31 @@
 #include "Ahorcado.h"
 #include <iostream>
 
+// Categorias
+const int VERDURAS = 0;
+const int FRUTAS = 1;
+const int PAISES = 2;
+const int NOMBRES_FEMENINOS = 3;
+const int NOMBRES_MASCULINOS = 4;
+const int COLORES = 5;
+const int LENGUAJES_PROGRAMACION = 6;
+const int INGLES = 7;
+const int CUALQUIER_COSA = 8;
+
+// Posibles palabras aleatorias
+const int CANT_PALABRAS = 10;
+const int CANT_CATEGORIAS = 9;
+const string PALABRAS[CANT_CATEGORIAS][CANT_PALABRAS] = { {"PAPA", "ACELGA", "TOMATE", "ZANAHORIA", "REMOLACHA", "BATATA", "ESPINACA", "ZUCCINI", "BERENJENA", "CEBOLLA"},
+                                                          {"BANANA", "MANZANA", "MANDARINA", "NARANJA", "HIGO", "DATIL", "MELON", "SANDIA", "ANANA", "CIRUELA"},
+                                                          {"ARGENTINA", "PARAGUAY", "URUGUAY", "CHILE", "BOLIVIA", "PERU", "ECUADOR", "VENEZUELA", "MEXICO", "GUATEMALA"},
+                                                          {"TOMAS", "PEDRO", "JUAN", "HERNAN", "ALEJANDRO", "TOBIAS", "MATEO", "THEO", "JORGE", "ANDRES"},
+                                                          {"VALERIA", "AGUSTINA", "ALEXA", "MARTINA", "MAGALI", "VERONICA", "FLORENCIA", "JOSELINA", "ANDREA", "INES"},
+                                                          {"AMARILLO", "AZUL", "NARANJA", "ROJO", "VERDE", "VIOLETA", "NEGRO", "BLANCO", "GRIS", "CELESTE"},
+                                                          {"JAVASCRIPT", "R", "PYTHON", "PHP", "SQL", "PASCAL", "COBOL", "PERL", "RUBY", "C"},
+                                                          {"DESKTOP", "FORK", "TABLESPOON", "OUTSIDE", "HIGHSCHOOL", "PENCILCASE", "CINEMA", "THEATRE", "REASON", "RUNNING"},
+                                                          {"NUTELLA", "HELADERA", "OTORRINOLARINGOLOGIA", "ALMOHADA", "FONOAUDIOLOGIA", "BOMBERO", "ANDROID", "PANQUEQUERA", "ORNITORRINCO", "COSO"} };
+
+
 // ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
 
 // <--------------------- constructores
@@ -123,9 +148,10 @@ void Ahorcado:: nuevoJuego() {
 
 // <--------------------- metodos para elegir
 void Ahorcado:: elegirCategoria() {
-    cout << "Que categoria preferis? ";
+    cout << "\nCategoria elegida: ";
     cin >> categoria;
-    Utils::validarNumero(1, 6, categoria);
+    Utils::validarNumero(1, CANT_CATEGORIAS, categoria);
+    categoria -= 1;
 }
 
 void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
@@ -136,27 +162,39 @@ void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
     switch (categoria) {
 
         case VERDURAS:
-            palabra = PALABRAS_VERDURAS[random];
+            palabra = PALABRAS[VERDURAS][random];
             break;
 
         case FRUTAS:
-            palabra = PALABRAS_FRUTAS[random];
+            palabra = PALABRAS[FRUTAS][random];
             break;
 
         case PAISES:
-            palabra = PALABRAS_PAISES[random];
+            palabra = PALABRAS[PAISES][random];
             break;
 
         case NOMBRES_FEMENINOS:
-            palabra = PALABRAS_NOMBRES_F[random];
+            palabra = PALABRAS[NOMBRES_FEMENINOS][random];
             break;
 
         case NOMBRES_MASCULINOS:
-            palabra = PALABRAS_NOMBRES_M[random];
+            palabra = PALABRAS[NOMBRES_MASCULINOS][random];
             break;
 
         case COLORES:
-            palabra = PALABRAS_COLORES[random];
+            palabra = PALABRAS[COLORES][random];
+            break;
+
+        case LENGUAJES_PROGRAMACION:
+            palabra = PALABRAS[LENGUAJES_PROGRAMACION][random];
+            break;
+
+        case INGLES:
+            palabra = PALABRAS[INGLES][random];
+            break;
+
+        case CUALQUIER_COSA:
+            palabra = PALABRAS[CUALQUIER_COSA][random];
             break;
     }
 
@@ -263,7 +301,10 @@ void Ahorcado:: mostrarCategorias() {
             "3. Paises\n"
             "4. Nombres femeninos\n"
             "5. Nombres masculinos\n"
-            "6. Colores\n";
+            "6. Colores\n"
+            "7. Lenguajes de programacion varios\n"
+            "8. Palabras random en ingles\n"
+            "9. Cualquier cosa\n";
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {

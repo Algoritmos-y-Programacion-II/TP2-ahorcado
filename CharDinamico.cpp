@@ -84,11 +84,12 @@ void CharDinamico:: mostrarCaracteres() {
 void CharDinamico:: redimensionar(int tamanioNuevo) {
     if (tamanioNuevo != tamanio) {
         char* auxiliar = palabra;
+        cout << "\n--REDIMENSIONAR AVISO-- El puntero auxiliar apunta al vector dinamico que se almacena en: " << static_cast<void *>(palabra);
         palabra = new char[tamanioNuevo];
-        cout << "\n--REDIMENSIONAR AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
+        cout << "\n--REDIMENSIONAR AVISO-- El vector dinamico ahora se almacena en: " << static_cast<void *>(palabra);
         copiarDatos(auxiliar, 0, tamanioNuevo);
         delete []auxiliar;
-        cout << "\n--REDIMENSIONAR AVISO-- Se libero la memoria auxiliar almacenada en: " << static_cast<void *>(palabra);
+        cout << "\n--REDIMENSIONAR AVISO-- Se libero la memoria a la que apuntaba auxiliar almacenada en: " << static_cast<void *>(auxiliar) << "\n";
         if (tamanioNuevo > tamanio)
             asignarNuloAlVector(tamanio + 1, tamanioNuevo);
         tamanio = tamanioNuevo;
