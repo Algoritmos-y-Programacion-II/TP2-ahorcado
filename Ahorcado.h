@@ -71,10 +71,17 @@ class Ahorcado {
         // POST: Devuelve las letras erroneas
         string obtenerLetrasErroneas();
 
+        // PRE: -
+        // POST: Le pide al usuario que elija una categoria y se la asigna al atributo
         void elegirCategoria();
 
+        // PRE: -
+        // POST: Asigna una palabra aleatoria de la categoria correspondiente al atributo palabraAleatoria
+        //       A palabraSecreta se le asigna la cantidad de '_' que correspondan
         void elegirPalabraAleatoriaSegunCategoria();
 
+        // PRE: -
+        // POST: El estadoJuego vuelve a ser EMPEZO_JUEGO, se reinician las vidas del jugador y letrasErroneas es ""
         void resetearJuego();
 
         // PRE: -

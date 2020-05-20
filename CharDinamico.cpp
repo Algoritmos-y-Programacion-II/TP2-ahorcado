@@ -24,7 +24,7 @@ CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     cout << "\n--CONSTRUCTOR 2 AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
-CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
+CharDinamico:: CharDinamico(const CharDinamico &palabraOut) {
     tamanio = palabraOut.tamanio;
     if (tamanio > 0) {
         palabra = new char[tamanio];
