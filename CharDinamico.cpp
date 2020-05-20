@@ -3,6 +3,7 @@
 //
 
 #include "CharDinamico.h"
+#include <iostream>
 
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 
@@ -13,14 +14,14 @@ CharDinamico:: CharDinamico(int tamanioOut) {
     for (int i = 0; i < tamanio ; i++) {
         insertarCaracter(NULO, i);
     }
-    cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
+    cout << "\n--CONSTRUCTOR 1 AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
 CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
     asignarPalabra(palabraOut);
-    cout << "\n--AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
+    cout << "\n--CONSTRUCTOR 2 AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
 CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
@@ -29,12 +30,13 @@ CharDinamico:: CharDinamico(const CharDinamico& palabraOut) {
         palabra = new char[tamanio];
         copiarDatos(palabraOut.palabra, 1, tamanio);
     } else palabra = 0;
+    cout << "\n--CONSTRUCTOR DE COPIA AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
 }
 
 CharDinamico:: ~CharDinamico() {
     if (tamanio > 0)
         delete [] palabra;
-    cout << "\n--AVISO-- Se libero la memoria almacenada en: " << static_cast<void *>(palabra);
+    cout << "\n--DESTRUCTOR AVISO-- Se libero la memoria almacenada en: " << static_cast<void *>(palabra);
 }
 // -------------------------------->
 
@@ -83,8 +85,10 @@ void CharDinamico:: redimensionar(int tamanioNuevo) {
     if (tamanioNuevo != tamanio) {
         char* auxiliar = palabra;
         palabra = new char[tamanioNuevo];
+        cout << "\n--REDIMENSIONAR AVISO-- El vector dinamico se almacena en: " << static_cast<void *>(palabra);
         copiarDatos(auxiliar, 0, tamanioNuevo);
         delete []auxiliar;
+        cout << "\n--REDIMENSIONAR AVISO-- Se libero la memoria auxiliar almacenada en: " << static_cast<void *>(palabra);
         if (tamanioNuevo > tamanio)
             asignarNuloAlVector(tamanio + 1, tamanioNuevo);
         tamanio = tamanioNuevo;

@@ -3,6 +3,7 @@
 //
 
 #include "Ahorcado.h"
+#include <iostream>
 
 // ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
 
@@ -219,6 +220,7 @@ void Ahorcado:: actualizarAhorcado() {
 void Ahorcado:: resetearJuego() {
     jugador.asignarVidas(CANT_VIDAS);
     estadoJuego = EMPEZO_JUEGO;
+    letrasErroneas = "";
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
@@ -240,7 +242,9 @@ void Ahorcado:: mostrarLogo() {
             "  / _ \\| __ | (_) |   / (__ / _ \\| |) | (_) |\n"
             " /_/ \\_\\_||_|\\___/|_|_\\\\___/_/ \\_\\___/ \\___/ \n\n";
 }
+
 void Ahorcado:: mostrarInstrucciones() {
+
     cout << "COMO JUGAR:\n"
             "            1. Decida si desea o no crear un usuario con su nombre\n"
             "            2. Elija la categoria a la cual pertenecera la palabra a adivinar\n"
@@ -263,21 +267,28 @@ void Ahorcado:: mostrarCategorias() {
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
+
     string nombre = jugador.obtenerNombre();
-    if (estadoJuego == GANO_JUEGO)  {
+
+    if (estadoJuego == GANO_JUEGO)
         cout << "Esta vez me ganaste " << nombre << "! Ya vas a ver la proxima...\n";
-    } else if (estadoJuego == PERDIO_JUEGO) {
+
+    else if (estadoJuego == PERDIO_JUEGO) {
+
         cout << "   ___   _   __  __ ___    _____   _____ ___ \n"
                 "  / __| /_\\ |  \\/  | __|  / _ \\ \\ / / __| _ \\\n"
                 " | (_ |/ _ \\| |\\/| | _|  | (_) \\ V /| _||   /\n"
                 "  \\___/_/ \\_\\_|  |_|___|  \\___/ \\_/ |___|_|_\\\n\n";
+
         cout << "Que pena " << nombre << ", esta vez perdiste. Quizas la proxima me ganas.\nLa palabra era: ";
+
         palabraAAdivinar.mostrarCaracteres();
         cout << "\n";
     }
 }
 
 void Ahorcado:: mostrarDespedida() {
+
     cout << "\nGracias por haber jugado al ahorcado "
          << jugador.obtenerNombre() << "!\nNos vemos la proxima :D\n";
 }
@@ -285,7 +296,7 @@ void Ahorcado:: mostrarDespedida() {
 void Ahorcado:: mostrarDibujoAhorcado() {
 
     if (jugador.obtenerVidas() > 0)
-        cout << "\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
+        cout << "\n\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
 
     switch (jugador.obtenerVidas()) {
         case 7:

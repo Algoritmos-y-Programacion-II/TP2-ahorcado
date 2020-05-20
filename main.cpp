@@ -19,6 +19,7 @@
  */
 
 #include "Ahorcado.h"
+#include <iostream>
 
 int main() {
 

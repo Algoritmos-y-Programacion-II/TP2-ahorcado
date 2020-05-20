@@ -5,7 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
 #define TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
 
-#include <iostream>
+#include <string>
 
 using namespace std;
 

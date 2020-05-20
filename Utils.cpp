@@ -4,6 +4,10 @@
 
 #include "Utils.h"
 
+#include <iostream>
+#include <ctime> // Numero "random"
+#include <regex> // Validaciones
+
 void Utils:: validarNumero(int min, int max, int &num) {
     while (num < min || num > max) {
         cout << "El numero esta fuera del rango pedido. Reingresa: ";
