@@ -21,7 +21,8 @@ Instalación
 
 - Instale [MinGw](https://osdn.net/projects/mingw/releases/) o algún compilador de C++ de su preferencia
 - Si no tiene instalado git instalelo
-	- Linux `sudo apt-get update`\n
+	- Linux `sudo apt-get update`
+	
 		`sudo apt-get install git`
 	- Windows https://git-scm.com/downloads
 - Desde la terminal vaya a la ubicacion en donde desea tener el proyecto, y clonelo con `git clone https://github.com/valva-ro/trabajoPractico2Ahorcado` 
