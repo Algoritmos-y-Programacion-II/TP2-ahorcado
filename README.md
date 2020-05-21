@@ -9,15 +9,15 @@ Es el clásico juego del ahorcado.
 1. Decida si desea o no crear un usuario con su nombre 
 2. Elija la categoría de la palabra a adivinar
 3. Intente adivinar la palabra antes de que se le acaben las vidas
-**Buena suerte!**
-Hecho con C++.
+**Buena suerte!**\n
+Hecho con C++.\n
 
 Instalación
 ------------
 
 - Instale [MinGw](https://osdn.net/projects/mingw/releases/) o algún compilador de C++ de su preferencia
 - Si no tiene instalado git instalelo
-	- Linux `sudo apt-get update`
+	- Linux `sudo apt-get update`\n
 		`sudo apt-get install git`
 	- Windows https://git-scm.com/downloads
 - Desde la terminal vaya a la ubicacion en donde desea tener el proyecto, y clonelo con `git clone https://github.com/valva-ro/trabajoPractico2Ahorcado` 
