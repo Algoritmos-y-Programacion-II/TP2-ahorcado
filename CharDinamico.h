@@ -5,7 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
 #define TRABAJOPRACTICO2AHORCADO_CHARDINAMICO_H
 
-#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -31,7 +31,9 @@ class CharDinamico {
         //       Muestra por pantalla en que lugar se reservo la memoria
         CharDinamico(string palabraOut, int tamanioOut);
 
-        CharDinamico(const CharDinamico& palabra);
+        // PRE: -
+        // POST: Copia los datos de palabraOut
+        CharDinamico(const CharDinamico &palabraOut);
 
         // PRE: -
         // POST: Libera la memoria
@@ -71,6 +73,7 @@ class CharDinamico {
         bool checkCaracterEnPalabra(char c);
 
     private:
+
         // PRE: 0 <= inicio <= final <= tamanio
         // POST: Asigna NULO al vector desde inicio hasta final
         void asignarNuloAlVector(int inicio, int final);

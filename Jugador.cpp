@@ -3,6 +3,7 @@
 //
 
 #include "Jugador.h"
+#include <iostream>
 
 // ------------------------------ METODOS PUBLICOS ----------------------------------//
 

@@ -5,9 +5,7 @@
 #ifndef TRABAJOPRACTICO2AHORCADO_UTILS_H
 #define TRABAJOPRACTICO2AHORCADO_UTILS_H
 
-#include <iostream>
-#include <ctime> // Numero "random"
-#include <regex> // Validaciones
+#include <string>
 
 using namespace std;
 

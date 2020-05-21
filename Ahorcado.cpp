@@ -3,6 +3,32 @@
 //
 
 #include "Ahorcado.h"
+#include <iostream>
+
+// Categorias
+const int VERDURAS = 0;
+const int FRUTAS = 1;
+const int PAISES = 2;
+const int NOMBRES_FEMENINOS = 3;
+const int NOMBRES_MASCULINOS = 4;
+const int COLORES = 5;
+const int LENGUAJES_PROGRAMACION = 6;
+const int INGLES = 7;
+const int CUALQUIER_COSA = 8;
+
+// Posibles palabras aleatorias
+const int CANT_PALABRAS = 10;
+const int CANT_CATEGORIAS = 9;
+const string PALABRAS[CANT_CATEGORIAS][CANT_PALABRAS] = { {"PAPA", "ACELGA", "TOMATE", "ZANAHORIA", "REMOLACHA", "BATATA", "ESPINACA", "ZUCCINI", "BERENJENA", "CEBOLLA"},
+                                                          {"BANANA", "MANZANA", "MANDARINA", "NARANJA", "HIGO", "DATIL", "MELON", "SANDIA", "ANANA", "CIRUELA"},
+                                                          {"ARGENTINA", "PARAGUAY", "URUGUAY", "CHILE", "BOLIVIA", "PERU", "ECUADOR", "VENEZUELA", "MEXICO", "GUATEMALA"},
+                                                          {"TOMAS", "PEDRO", "JUAN", "HERNAN", "ALEJANDRO", "TOBIAS", "MATEO", "THEO", "JORGE", "ANDRES"},
+                                                          {"VALERIA", "AGUSTINA", "ALEXA", "MARTINA", "MAGALI", "VERONICA", "FLORENCIA", "JOSELINA", "ANDREA", "INES"},
+                                                          {"AMARILLO", "AZUL", "NARANJA", "ROJO", "VERDE", "VIOLETA", "NEGRO", "BLANCO", "GRIS", "CELESTE"},
+                                                          {"JAVASCRIPT", "R", "PYTHON", "PHP", "SQL", "PASCAL", "COBOL", "PERL", "RUBY", "C"},
+                                                          {"DESKTOP", "FORK", "TABLESPOON", "OUTSIDE", "HIGHSCHOOL", "PENCILCASE", "CINEMA", "THEATRE", "REASON", "RUNNING"},
+                                                          {"NUTELLA", "HELADERA", "OTORRINOLARINGOLOGIA", "ALMOHADA", "FONOAUDIOLOGIA", "BOMBERO", "ANDROID", "PANQUEQUERA", "ORNITORRINCO", "COSO"} };
+
 
 // ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
 
@@ -122,9 +148,10 @@ void Ahorcado:: nuevoJuego() {
 
 // <--------------------- metodos para elegir
 void Ahorcado:: elegirCategoria() {
-    cout << "Que categoria preferis? ";
+    cout << "\nCategoria elegida: ";
     cin >> categoria;
-    Utils::validarNumero(1, 6, categoria);
+    Utils::validarNumero(1, CANT_CATEGORIAS, categoria);
+    categoria -= 1;
 }
 
 void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
@@ -135,27 +162,39 @@ void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
     switch (categoria) {
 
         case VERDURAS:
-            palabra = PALABRAS_VERDURAS[random];
+            palabra = PALABRAS[VERDURAS][random];
             break;
 
         case FRUTAS:
-            palabra = PALABRAS_FRUTAS[random];
+            palabra = PALABRAS[FRUTAS][random];
             break;
 
         case PAISES:
-            palabra = PALABRAS_PAISES[random];
+            palabra = PALABRAS[PAISES][random];
             break;
 
         case NOMBRES_FEMENINOS:
-            palabra = PALABRAS_NOMBRES_F[random];
+            palabra = PALABRAS[NOMBRES_FEMENINOS][random];
             break;
 
         case NOMBRES_MASCULINOS:
-            palabra = PALABRAS_NOMBRES_M[random];
+            palabra = PALABRAS[NOMBRES_MASCULINOS][random];
             break;
 
         case COLORES:
-            palabra = PALABRAS_COLORES[random];
+            palabra = PALABRAS[COLORES][random];
+            break;
+
+        case LENGUAJES_PROGRAMACION:
+            palabra = PALABRAS[LENGUAJES_PROGRAMACION][random];
+            break;
+
+        case INGLES:
+            palabra = PALABRAS[INGLES][random];
+            break;
+
+        case CUALQUIER_COSA:
+            palabra = PALABRAS[CUALQUIER_COSA][random];
             break;
     }
 
@@ -219,6 +258,7 @@ void Ahorcado:: actualizarAhorcado() {
 void Ahorcado:: resetearJuego() {
     jugador.asignarVidas(CANT_VIDAS);
     estadoJuego = EMPEZO_JUEGO;
+    letrasErroneas = "";
 }
 
 bool Ahorcado:: deseaJugarDeNuevo() {
@@ -240,7 +280,9 @@ void Ahorcado:: mostrarLogo() {
             "  / _ \\| __ | (_) |   / (__ / _ \\| |) | (_) |\n"
             " /_/ \\_\\_||_|\\___/|_|_\\\\___/_/ \\_\\___/ \\___/ \n\n";
 }
+
 void Ahorcado:: mostrarInstrucciones() {
+
     cout << "COMO JUGAR:\n"
             "            1. Decida si desea o no crear un usuario con su nombre\n"
             "            2. Elija la categoria a la cual pertenecera la palabra a adivinar\n"
@@ -259,25 +301,35 @@ void Ahorcado:: mostrarCategorias() {
             "3. Paises\n"
             "4. Nombres femeninos\n"
             "5. Nombres masculinos\n"
-            "6. Colores\n";
+            "6. Colores\n"
+            "7. Lenguajes de programacion varios\n"
+            "8. Palabras random en ingles\n"
+            "9. Cualquier cosa\n";
 }
 
 void Ahorcado:: mostrarMensajeGanoOPerdio() {
+
     string nombre = jugador.obtenerNombre();
-    if (estadoJuego == GANO_JUEGO)  {
+
+    if (estadoJuego == GANO_JUEGO)
         cout << "Esta vez me ganaste " << nombre << "! Ya vas a ver la proxima...\n";
-    } else if (estadoJuego == PERDIO_JUEGO) {
+
+    else if (estadoJuego == PERDIO_JUEGO) {
+
         cout << "   ___   _   __  __ ___    _____   _____ ___ \n"
                 "  / __| /_\\ |  \\/  | __|  / _ \\ \\ / / __| _ \\\n"
                 " | (_ |/ _ \\| |\\/| | _|  | (_) \\ V /| _||   /\n"
                 "  \\___/_/ \\_\\_|  |_|___|  \\___/ \\_/ |___|_|_\\\n\n";
+
         cout << "Que pena " << nombre << ", esta vez perdiste. Quizas la proxima me ganas.\nLa palabra era: ";
+
         palabraAAdivinar.mostrarCaracteres();
         cout << "\n";
     }
 }
 
 void Ahorcado:: mostrarDespedida() {
+
     cout << "\nGracias por haber jugado al ahorcado "
          << jugador.obtenerNombre() << "!\nNos vemos la proxima :D\n";
 }
@@ -285,7 +337,7 @@ void Ahorcado:: mostrarDespedida() {
 void Ahorcado:: mostrarDibujoAhorcado() {
 
     if (jugador.obtenerVidas() > 0)
-        cout << "\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
+        cout << "\n\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
 
     switch (jugador.obtenerVidas()) {
         case 7:
