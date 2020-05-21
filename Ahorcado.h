@@ -51,7 +51,7 @@ class Ahorcado {
         // POST: Le asigna a palabraAAdivinar el string palabra
         void asignarPalabraAAdivinar(string palabra);
 
-        // PRE: opcion debe ser un entero valido
+        // PRE: opcion debe ser un entero mayor a cero y menor o igual a CANT_CATEGORIAS
         // POST: Le asigna al atributo categoria la opcion recibida por parametro
         void asignarCategoria(int opcion);
 

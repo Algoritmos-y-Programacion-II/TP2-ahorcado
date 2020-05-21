@@ -44,7 +44,7 @@ class CharDinamico {
         // POST: Devuelve el tamanio del vector
         int obtenerTamanio();
 
-        // PRE:
+        // PRE: -
         // POST: Devuelve la palabra
         string obtenerPalabra();
 
