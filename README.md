@@ -3,14 +3,18 @@
 Trabajo Practico Individual N2: Ahorcado
 ------------
 
-Es el clásico juego del ahorcado.
+Es el clásico juego del ahorcado para una persona.
 
-**COMO JUGAR:**
-1. Decida si desea o no crear un usuario con su nombre 
-2. Elija la categoría de la palabra a adivinar
-3. Intente adivinar la palabra antes de que se le acaben las vidas
-**Buena suerte!**\n
-Hecho con C++.\n
+Como Jugar
+------------
+1. Instale el juego como se describe a continuación
+2. Decida si desea o no crear un usuario con su nombre 
+3. Elija la categoría de la palabra a adivinar
+4. Intente adivinar la palabra antes de que se le acaben las vidas
+
+**Buena suerte!**
+
+Hecho con C++.
 
 Instalación
 ------------
