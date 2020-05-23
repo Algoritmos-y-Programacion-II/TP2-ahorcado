@@ -33,14 +33,12 @@ const string PALABRAS[CANT_CATEGORIAS][CANT_PALABRAS] = { {"PAPA", "ACELGA", "TO
 // ------------------------------------------------ METODOS PUBLICOS ------------------------------------------------//
 
 // <--------------------- constructores
-Ahorcado:: Ahorcado() : palabraAAdivinar(0),
-                        palabraSecreta(0) {
+Ahorcado:: Ahorcado() {
     estadoJuego = EMPEZO_JUEGO;
     letrasErroneas = "";
 }
 
-Ahorcado:: Ahorcado(Jugador jugadorOut) : palabraAAdivinar(0),
-                                          palabraSecreta(0) {
+Ahorcado:: Ahorcado(Jugador jugadorOut) {
     jugador = jugadorOut;
     jugador.asignarVidas(CANT_VIDAS);
     estadoJuego = EMPEZO_JUEGO;
@@ -49,8 +47,8 @@ Ahorcado:: Ahorcado(Jugador jugadorOut) : palabraAAdivinar(0),
 
 
 // <--------------------- setters
-void Ahorcado:: asignarNombreJugador(Jugador jugadorOut) {
-    jugador.asignarNombre(jugadorOut.obtenerNombre());
+void Ahorcado:: asignarNombreJugador(string nombreJugador) {
+    jugador.asignarNombre(nombreJugador);
 }
 
 void Ahorcado:: asignarPalabraSecreta(int tamanioOut) {
@@ -249,7 +247,7 @@ void Ahorcado:: arriesgar(string palabra) {
 // <---------------------  otros metodos
 void Ahorcado:: actualizarAhorcado() {
     mostrarDibujoAhorcado();
-    cout << "             ";
+    cout << "           ";
     palabraSecreta.mostrarCaracteres();
     cout << "\n+==================================+\n";
     cout << "Letras ingresadas que no forman parte de la palabra:\n" << letrasErroneas << "\n\n";
@@ -337,7 +335,7 @@ void Ahorcado:: mostrarDespedida() {
 void Ahorcado:: mostrarDibujoAhorcado() {
 
     if (jugador.obtenerVidas() > 0)
-        cout << "\n\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
+        cout << "\nTe quedan " << jugador.obtenerVidas() << " vidas\n";
 
     switch (jugador.obtenerVidas()) {
         case 7:

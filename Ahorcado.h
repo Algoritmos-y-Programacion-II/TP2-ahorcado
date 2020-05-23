@@ -36,12 +36,12 @@ class Ahorcado {
         Ahorcado(Jugador jugadorOut);
 
         // PRE: -
-        // POST: Es la estructura del juego, utilizar este metodo si no se desea implementar la logica en el main
+        // POST: Es la estructura del juego, utilizar este metodo si no se desea implementar la logica en la funcion principal
         void main();
 
         // PRE: jugadorOut tiene que ser un objeto valido
         // POST: Le asigna el nombre de jugadorOut al atributo jugador
-        void asignarNombreJugador(Jugador jugadorOut);
+        void asignarNombreJugador(string nombreJugador);
 
         // PRE: tamanioOut tiene que ser mayor o igual a cero
         // POST: Le asigna a palabraSecreta tamanioOut cantidad de guiones bajos (´_´)
