@@ -4,12 +4,11 @@
   Hecho por Valentina Varela Rodriguez - 105374
 
  * ACLARACION
-             * Utils inicialmente era una clase con metodos estaticos y sin atributos, pregunte por el grupo de
+               Utils inicialmente era una clase con metodos estaticos y sin atributos, pregunte por el grupo de
                Telegram y Andy me dijo que la podía dejar así.
                Sin embargo había algo en esto que no me terminaba de cerrar y luego de investigar vi que en varios foros
-               se desaconsejaba ese tipo de clases, muy utilizadas cuando se pasa de programar de manera estructurada a
-               poo, porque probablemente son metodos que podrian implementarse de manera más "elegante" y teniendo
-               en cuenta los objetivos del paradigma.
+               se desaconsejaban este tipo de clases porque probablemente son metodos que podrian implementarse en las
+               clases existentes o utilizando herencia y polimorfismo.
                En caso de "necesitar" o mejor dicho querer implementar una clase de ese estilo, recomendaban utilizar
                un namespace y eso fue lo que hice.
                Links:

@@ -58,6 +58,6 @@ string Jugador:: pedirNombre() {
 
 void Jugador:: quitarVidas(int vidasASacar) {
     vidas -= vidasASacar;
-    cout << "Ooops! Incorrecto\n";
+    cout << "Ooops! Perdiste " << vidasASacar << " vida(s)\n";
 }
 // -------------------------------->
