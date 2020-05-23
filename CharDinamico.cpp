@@ -11,6 +11,7 @@
 CharDinamico:: CharDinamico(int tamanioOut) {
     tamanio = tamanioOut;
     palabra = new char[tamanio];
+
     for (int i = 0; i < tamanio ; i++) {
         insertarCaracter(NULO, i);
     }
@@ -26,10 +27,13 @@ CharDinamico:: CharDinamico(string palabraOut, int tamanioOut) {
 
 CharDinamico:: CharDinamico(const CharDinamico &palabraOut) {
     tamanio = palabraOut.tamanio;
+
     if (tamanio > 0) {
         palabra = new char[tamanio];
         copiarDatos(palabraOut.palabra, 1, tamanio);
-    } else palabra = 0;
+    }
+
+    else palabra = 0;
     cout << "\n--CONSTRUCTOR DE COPIA AVISO-- El vector dinamico se almacena en: " << (int *)palabra;
 }
 
@@ -44,6 +48,7 @@ CharDinamico:: ~CharDinamico() {
 // <--------------------- getters
 string CharDinamico:: obtenerPalabra() {
     string palabraStr;
+
     for (int i = 0; i < tamanio; i++) {
         palabraStr += toupper(palabra[i]);
     }
@@ -63,6 +68,7 @@ int CharDinamico:: obtenerTamanio() {
 // <--------------------- setters
 void CharDinamico:: asignarPalabra(string palabraOut) {
     redimensionar(palabraOut.size());
+
     for (int i = 0; i < tamanio; i++) {
         palabra[i] = palabraOut[i];
     }
@@ -83,25 +89,34 @@ void CharDinamico:: mostrarCaracteres() {
 
 void CharDinamico:: redimensionar(int tamanioNuevo) {
     if (tamanioNuevo != tamanio) {
+
         char* auxiliar = palabra;
         cout << "\n--REDIMENSIONAR AVISO-- El puntero auxiliar apunta al vector dinamico que se almacena en: " << (int *)palabra;
+
         palabra = new char[tamanioNuevo];
         cout << "\n--REDIMENSIONAR AVISO-- El vector dinamico ahora se almacena en: " << (int *)palabra;
+
         copiarDatos(auxiliar, 0, tamanioNuevo);
+
         delete []auxiliar;
         cout << "\n--REDIMENSIONAR AVISO-- Se libero la memoria a la que apuntaba auxiliar almacenada en: " << (int *)palabra << "\n";
+
         if (tamanioNuevo > tamanio)
             asignarNuloAlVector(tamanio + 1, tamanioNuevo);
+
         tamanio = tamanioNuevo;
     }
 }
 
 bool CharDinamico:: checkCaracterEnPalabra(char c) {
     bool charEstaEnString = false;
+
     for (int i = 0; i < tamanio; i++) {
+
         if (c == palabra[i])
             charEstaEnString = true;
     }
+
     return charEstaEnString;
 }
 

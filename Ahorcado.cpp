@@ -197,7 +197,7 @@ void Ahorcado:: elegirPalabraAleatoriaSegunCategoria() {
     }
 
     palabraAAdivinar.asignarPalabra(palabra);
-    asignarPalabraSecreta(palabra.length());
+    asignarPalabraSecreta(palabraAAdivinar.obtenerTamanio());
 }
 // -------------------------------->
 
