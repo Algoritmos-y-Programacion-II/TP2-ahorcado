@@ -52,11 +52,10 @@ void Ahorcado:: asignarNombreJugador(string nombreJugador) {
 }
 
 void Ahorcado:: asignarPalabraSecreta(int tamanioOut) {
-    string palabraSecretaNueva;
+    palabraSecreta.redimensionar(tamanioOut);
     for (int i = 0; i < tamanioOut; i++) {
-        palabraSecretaNueva += "_";
+        palabraSecreta.insertarCaracter('_', i);
     }
-    palabraSecreta.asignarPalabra(palabraSecretaNueva);
 }
 
 void Ahorcado:: asignarPalabraAAdivinar(string palabra) {

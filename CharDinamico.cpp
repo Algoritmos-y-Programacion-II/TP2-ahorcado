@@ -88,6 +88,7 @@ void CharDinamico:: mostrarCaracteres() {
 }
 
 void CharDinamico:: redimensionar(int tamanioNuevo) {
+
     if (tamanioNuevo != tamanio) {
 
         char* auxiliar = palabra;
@@ -95,8 +96,6 @@ void CharDinamico:: redimensionar(int tamanioNuevo) {
 
         palabra = new char[tamanioNuevo];
         cout << "\n--REDIMENSIONAR AVISO-- El vector dinamico ahora se almacena en: " << (int *)palabra;
-
-        copiarDatos(auxiliar, 0, tamanioNuevo);
 
         delete []auxiliar;
         cout << "\n--REDIMENSIONAR AVISO-- Se libero la memoria a la que apuntaba auxiliar almacenada en: " << (int *)palabra << "\n";
@@ -112,7 +111,6 @@ bool CharDinamico:: checkCaracterEnPalabra(char c) {
     bool charEstaEnString = false;
 
     for (int i = 0; i < tamanio; i++) {
-
         if (c == palabra[i])
             charEstaEnString = true;
     }
@@ -123,7 +121,7 @@ bool CharDinamico:: checkCaracterEnPalabra(char c) {
 void CharDinamico:: asignarNuloAlVector(int inicio, int final) {
     if (tamanio > 0)
         for (int i = inicio; i < final; i++)
-            palabra[i] = ' ';
+            palabra[i] = NULO;
 }
 
 void CharDinamico:: copiarDatos(char* vec, int inicio, int final) {
