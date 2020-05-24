@@ -60,7 +60,6 @@ void Ahorcado:: asignarPalabraSecreta(int tamanioOut) {
 
 void Ahorcado:: asignarPalabraAAdivinar(string palabra) {
     palabraAAdivinar.asignarPalabra(palabra);
-    estadoJuego = EMPEZO_JUEGO;
 }
 
 void Ahorcado:: asignarCategoria(int opcion) {
